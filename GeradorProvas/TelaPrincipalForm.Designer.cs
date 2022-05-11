@@ -39,14 +39,14 @@
             this.questõesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.examesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip = new System.Windows.Forms.ToolStrip();
-            this.panelConteudo = new System.Windows.Forms.Panel();
-            this.panelRodape = new System.Windows.Forms.Panel();
-            this.txtRodape = new System.Windows.Forms.Label();
-            this.labelTipoCadastro = new System.Windows.Forms.Label();
             this.btnInserir = new System.Windows.Forms.ToolStripButton();
             this.btnEditar = new System.Windows.Forms.ToolStripButton();
             this.btnExcluir = new System.Windows.Forms.ToolStripButton();
             this.btnFiltrar = new System.Windows.Forms.ToolStripButton();
+            this.panelConteudo = new System.Windows.Forms.Panel();
+            this.panelRodape = new System.Windows.Forms.Panel();
+            this.txtRodape = new System.Windows.Forms.Label();
+            this.labelTipoCadastro = new System.Windows.Forms.Label();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
             this.menuStrip1.SuspendLayout();
@@ -142,6 +142,54 @@
             this.toolStrip.TabIndex = 1;
             this.toolStrip.Text = "toolStrip1";
             // 
+            // btnInserir
+            // 
+            this.btnInserir.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btnInserir.Image = global::GeradorProvas.Properties.Resources.add;
+            this.btnInserir.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.btnInserir.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnInserir.Margin = new System.Windows.Forms.Padding(0, 1, 15, 2);
+            this.btnInserir.Name = "btnInserir";
+            this.btnInserir.Size = new System.Drawing.Size(28, 28);
+            this.btnInserir.Text = "toolStripButton3";
+            this.btnInserir.Click += new System.EventHandler(this.btnInserir_Click);
+            // 
+            // btnEditar
+            // 
+            this.btnEditar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btnEditar.Image = global::GeradorProvas.Properties.Resources.edit;
+            this.btnEditar.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.btnEditar.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnEditar.Margin = new System.Windows.Forms.Padding(0, 1, 15, 2);
+            this.btnEditar.Name = "btnEditar";
+            this.btnEditar.Size = new System.Drawing.Size(28, 28);
+            this.btnEditar.Text = "toolStripButton4";
+            this.btnEditar.Click += new System.EventHandler(this.btnEditar_Click);
+            // 
+            // btnExcluir
+            // 
+            this.btnExcluir.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btnExcluir.Image = global::GeradorProvas.Properties.Resources.trash;
+            this.btnExcluir.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.btnExcluir.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnExcluir.Margin = new System.Windows.Forms.Padding(0, 1, 15, 2);
+            this.btnExcluir.Name = "btnExcluir";
+            this.btnExcluir.Size = new System.Drawing.Size(28, 28);
+            this.btnExcluir.Text = "toolStripButton5";
+            this.btnExcluir.Click += new System.EventHandler(this.btnExcluir_Click);
+            // 
+            // btnFiltrar
+            // 
+            this.btnFiltrar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btnFiltrar.Image = global::GeradorProvas.Properties.Resources.verify;
+            this.btnFiltrar.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.btnFiltrar.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnFiltrar.Margin = new System.Windows.Forms.Padding(0, 1, 15, 2);
+            this.btnFiltrar.Name = "btnFiltrar";
+            this.btnFiltrar.Size = new System.Drawing.Size(28, 28);
+            this.btnFiltrar.Text = "toolStripButton6";
+            this.btnFiltrar.Click += new System.EventHandler(this.btnFiltrar_Click);
+            // 
             // panelConteudo
             // 
             this.panelConteudo.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -178,51 +226,6 @@
             this.labelTipoCadastro.Size = new System.Drawing.Size(106, 16);
             this.labelTipoCadastro.TabIndex = 4;
             this.labelTipoCadastro.Text = "Tipo Cadastro";
-            // 
-            // btnInserir
-            // 
-            this.btnInserir.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btnInserir.Image = global::GeradorProvas.Properties.Resources.add;
-            this.btnInserir.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.btnInserir.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnInserir.Margin = new System.Windows.Forms.Padding(0, 1, 15, 2);
-            this.btnInserir.Name = "btnInserir";
-            this.btnInserir.Size = new System.Drawing.Size(28, 28);
-            this.btnInserir.Text = "toolStripButton3";
-            this.btnInserir.Click += new System.EventHandler(this.btnInserir_Click);
-            // 
-            // btnEditar
-            // 
-            this.btnEditar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btnEditar.Image = global::GeradorProvas.Properties.Resources.edit;
-            this.btnEditar.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.btnEditar.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnEditar.Margin = new System.Windows.Forms.Padding(0, 1, 15, 2);
-            this.btnEditar.Name = "btnEditar";
-            this.btnEditar.Size = new System.Drawing.Size(28, 28);
-            this.btnEditar.Text = "toolStripButton4";
-            // 
-            // btnExcluir
-            // 
-            this.btnExcluir.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btnExcluir.Image = global::GeradorProvas.Properties.Resources.trash;
-            this.btnExcluir.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.btnExcluir.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnExcluir.Margin = new System.Windows.Forms.Padding(0, 1, 15, 2);
-            this.btnExcluir.Name = "btnExcluir";
-            this.btnExcluir.Size = new System.Drawing.Size(28, 28);
-            this.btnExcluir.Text = "toolStripButton5";
-            // 
-            // btnFiltrar
-            // 
-            this.btnFiltrar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btnFiltrar.Image = global::GeradorProvas.Properties.Resources.verify;
-            this.btnFiltrar.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.btnFiltrar.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnFiltrar.Margin = new System.Windows.Forms.Padding(0, 1, 15, 2);
-            this.btnFiltrar.Name = "btnFiltrar";
-            this.btnFiltrar.Size = new System.Drawing.Size(28, 28);
-            this.btnFiltrar.Text = "toolStripButton6";
             // 
             // toolStripButton1
             // 

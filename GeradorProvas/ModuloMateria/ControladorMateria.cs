@@ -13,22 +13,24 @@ namespace GeradorProvas.ModuloMateria
         private TabelaMateriaControl tabelaMateria;
         public override void Editar()
         {
-            throw new NotImplementedException();
+            TelaCadastroMateriaForm telaCadastro = new TelaCadastroMateriaForm("Editar Matéria");
+            telaCadastro.ShowDialog();
         }
 
         public override void Excluir()
         {
-            throw new NotImplementedException();
+            MessageBox.Show("Deseja realmente excluir essa matéria?", "Excluir matéria", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
         }
 
         public override void Filtrar()
         {
-            throw new NotImplementedException();
+            TelaFiltroMateriaForm telaFiltro = new TelaFiltroMateriaForm("Filtrar Matérias");
+            telaFiltro.ShowDialog();
         }
 
         public override void Inserir()
         {
-            TelaCadastroMateriaForm telaCadastro = new TelaCadastroMateriaForm();
+            TelaCadastroMateriaForm telaCadastro = new TelaCadastroMateriaForm("Cadastrar Matéria");
             telaCadastro.ShowDialog();
         }
 
