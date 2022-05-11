@@ -12,32 +12,39 @@ namespace GeradorProvas.ModuloQuestao
     {
         public override void Editar()
         {
-            throw new NotImplementedException();
+            TelaCadastroQuestaoForm telaEdicao = new TelaCadastroQuestaoForm("Editar Questão");
+            telaEdicao.ShowDialog();
         }
 
         public override void Excluir()
         {
-            throw new NotImplementedException();
+            MessageBox.Show("Deseja realmente excluir essa questão?", "Excluir questão", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
         }
 
         public override void Filtrar()
         {
-            throw new NotImplementedException();
+            TelaFiltroQuestaoForm telaFiltro = new TelaFiltroQuestaoForm("Editar Questão");
+            telaFiltro.ShowDialog();
         }
 
         public override void Inserir()
         {
-            throw new NotImplementedException();
+            TelaCadastroQuestaoForm telaCadastro = new TelaCadastroQuestaoForm("Editar Questão");
+            telaCadastro.ShowDialog();
         }
 
         public override ConfiguracaoToolboxBase ObterConfiguracaoToolbox()
         {
-            throw new NotImplementedException();
+            return new ConfiguracaoToolboxQuestao();
         }
 
         public override UserControl ObterListagem()
         {
-            throw new NotImplementedException();
+            var tabelaQuestao = new TabelaQuestaoControl();
+
+            //CarregarQuestoes();
+
+            return tabelaQuestao;
         }
     }
 }

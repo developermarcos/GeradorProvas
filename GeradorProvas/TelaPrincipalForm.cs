@@ -1,5 +1,6 @@
 ﻿using GeradorProvas.Compartilhado;
 using GeradorProvas.ModuloMateria;
+using GeradorProvas.ModuloQuestao;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
@@ -40,12 +41,12 @@ namespace GeradorProvas
 
         private void menuQuestao_Click(object sender, EventArgs e)
         {
-
+            ConfigurarTelaPrincipal((ToolStripMenuItem)sender);
         }
 
         private void menuExame_Click(object sender, EventArgs e)
         {
-
+            ConfigurarTelaPrincipal((ToolStripMenuItem)sender);
         }
 
         private void ConfigurarTelaPrincipal(ToolStripMenuItem opcaoSelecionada)
@@ -110,6 +111,7 @@ namespace GeradorProvas
 
             controladores = new Dictionary<string, ControladorBase>();
             controladores.Add("Materias", new ControladorMateria());
+            controladores.Add("Questões", new ControladorQuestao());
         }
 
         private void btnInserir_Click(object sender, EventArgs e)

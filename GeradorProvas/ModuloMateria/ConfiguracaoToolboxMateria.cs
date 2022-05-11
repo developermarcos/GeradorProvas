@@ -19,12 +19,6 @@ namespace GeradorProvas.ModuloMateria
 
         public override string TooltipFiltrar => "Filtrar materias";
 
-        public override bool InserirHabilitado { get { return true; } }
-
-        public override bool EditarHabilitado { get { return true; } }
-
-        public override bool ExcluirHabilitado { get { return true; } }
-
         public override bool FiltrarHabilitado { get { return true; } }
 
     }

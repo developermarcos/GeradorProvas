@@ -18,5 +18,7 @@ namespace GeradorProvas.ModuloQuestao
         public override string TooltipExcluir => "Excluir questão";
 
         public override string TooltipFiltrar => "Filtrar questão";
+
+        public override bool FiltrarHabilitado { get { return true; } }
     }
 }

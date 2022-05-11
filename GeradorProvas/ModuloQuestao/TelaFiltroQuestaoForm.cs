@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace GeradorProvas.ModuloQuestao
 {
-    public partial class TelaCadastroQuestaoForm : Form
+    public partial class TelaFiltroQuestaoForm : Form
     {
-        public TelaCadastroQuestaoForm(string nomeTela)
+        public TelaFiltroQuestaoForm(string nomeTela)
         {
             InitializeComponent();
 

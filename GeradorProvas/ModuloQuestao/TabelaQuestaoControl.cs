@@ -10,13 +10,12 @@ using System.Windows.Forms;
 
 namespace GeradorProvas.ModuloQuestao
 {
-    public partial class TelaCadastroQuestaoForm : Form
+    public partial class TabelaQuestaoControl : UserControl
     {
-        public TelaCadastroQuestaoForm(string nomeTela)
+        public TabelaQuestaoControl()
         {
             InitializeComponent();
 
-            Text = nomeTela;
         }
     }
 }
