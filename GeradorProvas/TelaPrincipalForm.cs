@@ -1,4 +1,5 @@
 ﻿using GeradorProvas.Compartilhado;
+using GeradorProvas.ModuloExame;
 using GeradorProvas.ModuloMateria;
 using GeradorProvas.ModuloQuestao;
 using System;
@@ -112,6 +113,7 @@ namespace GeradorProvas
             controladores = new Dictionary<string, ControladorBase>();
             controladores.Add("Materias", new ControladorMateria());
             controladores.Add("Questões", new ControladorQuestao());
+            controladores.Add("Exames", new ControladorExame());
         }
 
         private void btnInserir_Click(object sender, EventArgs e)

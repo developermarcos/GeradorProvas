@@ -41,7 +41,7 @@ namespace GeradorProvas.ModuloMateria
 
         public override UserControl ObterListagem()
         {
-            tabelaMateria = new TabelaMateriaControl();
+            var tabelaMateria = new TabelaMateriaControl();
 
             //CarregarMaterias();
 

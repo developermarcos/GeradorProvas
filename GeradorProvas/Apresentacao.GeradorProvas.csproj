@@ -48,6 +48,26 @@
   <ItemGroup>
     <Compile Include="Compartilhado\ConfiguracaoToolboxBase.cs" />
     <Compile Include="Compartilhado\ControladorBase.cs" />
+    <Compile Include="ModuloExame\ConfiguracaoToolboxExame.cs" />
+    <Compile Include="ModuloExame\ControladorExame.cs" />
+    <Compile Include="ModuloExame\TabelaExameControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ModuloExame\TabelaExameControl.Designer.cs">
+      <DependentUpon>TabelaExameControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ModuloExame\TelaCadastroExameForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModuloExame\TelaCadastroExameForm.Designer.cs">
+      <DependentUpon>TelaCadastroExameForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ModuloExame\TelaFiltroExameForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModuloExame\TelaFiltroExameForm.Designer.cs">
+      <DependentUpon>TelaFiltroExameForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="ModuloMateria\ConfiguracaoToolboxMateria.cs" />
     <Compile Include="ModuloMateria\ControladorMateria.cs" />
     <Compile Include="ModuloMateria\TabelaMateriaControl.cs">
@@ -101,6 +121,15 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="ModuloExame\TabelaExameControl.resx">
+      <DependentUpon>TabelaExameControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModuloExame\TelaCadastroExameForm.resx">
+      <DependentUpon>TelaCadastroExameForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModuloExame\TelaFiltroExameForm.resx">
+      <DependentUpon>TelaFiltroExameForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ModuloMateria\TabelaMateriaControl.resx">
       <DependentUpon>TabelaMateriaControl.cs</DependentUpon>
     </EmbeddedResource>
