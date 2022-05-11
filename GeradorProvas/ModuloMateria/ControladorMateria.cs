@@ -28,7 +28,8 @@ namespace GeradorProvas.ModuloMateria
 
         public override void Inserir()
         {
-            throw new NotImplementedException();
+            TelaCadastroMateriaForm telaCadastro = new TelaCadastroMateriaForm();
+            telaCadastro.ShowDialog();
         }
 
         public override ConfiguracaoToolboxBase ObterConfiguracaoToolbox()

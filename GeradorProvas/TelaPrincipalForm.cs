@@ -111,5 +111,10 @@ namespace GeradorProvas
             controladores = new Dictionary<string, ControladorBase>();
             controladores.Add("Materias", new ControladorMateria());
         }
+
+        private void btnInserir_Click(object sender, EventArgs e)
+        {
+            controlador.Inserir();
+        }
     }
 }

@@ -39,16 +39,16 @@
             this.questõesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.examesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip = new System.Windows.Forms.ToolStrip();
+            this.panelConteudo = new System.Windows.Forms.Panel();
+            this.panelRodape = new System.Windows.Forms.Panel();
+            this.txtRodape = new System.Windows.Forms.Label();
+            this.labelTipoCadastro = new System.Windows.Forms.Label();
             this.btnInserir = new System.Windows.Forms.ToolStripButton();
             this.btnEditar = new System.Windows.Forms.ToolStripButton();
             this.btnExcluir = new System.Windows.Forms.ToolStripButton();
             this.btnFiltrar = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
-            this.panelConteudo = new System.Windows.Forms.Panel();
-            this.panelRodape = new System.Windows.Forms.Panel();
-            this.txtRodape = new System.Windows.Forms.Label();
-            this.labelTipoCadastro = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.toolStrip.SuspendLayout();
             this.panelRodape.SuspendLayout();
@@ -60,7 +60,7 @@
             this.ToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(800, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(800, 25);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -70,28 +70,32 @@
             this.menuMateria,
             this.menuQuestao,
             this.menuExame});
+            this.ToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ToolStripMenuItem.Name = "ToolStripMenuItem";
-            this.ToolStripMenuItem.Size = new System.Drawing.Size(71, 20);
+            this.ToolStripMenuItem.Size = new System.Drawing.Size(79, 21);
             this.ToolStripMenuItem.Text = "Cadastros";
             // 
             // menuMateria
             // 
             this.menuMateria.Name = "menuMateria";
-            this.menuMateria.Size = new System.Drawing.Size(180, 22);
+            this.menuMateria.ShortcutKeys = System.Windows.Forms.Keys.F1;
+            this.menuMateria.Size = new System.Drawing.Size(152, 22);
             this.menuMateria.Text = "Materias";
             this.menuMateria.Click += new System.EventHandler(this.menuMateria_Click);
             // 
             // menuQuestao
             // 
             this.menuQuestao.Name = "menuQuestao";
-            this.menuQuestao.Size = new System.Drawing.Size(180, 22);
+            this.menuQuestao.ShortcutKeys = System.Windows.Forms.Keys.F2;
+            this.menuQuestao.Size = new System.Drawing.Size(152, 22);
             this.menuQuestao.Text = "Questões";
             this.menuQuestao.Click += new System.EventHandler(this.menuQuestao_Click);
             // 
             // menuExame
             // 
             this.menuExame.Name = "menuExame";
-            this.menuExame.Size = new System.Drawing.Size(180, 22);
+            this.menuExame.ShortcutKeys = System.Windows.Forms.Keys.F3;
+            this.menuExame.Size = new System.Drawing.Size(152, 22);
             this.menuExame.Text = "Exames";
             this.menuExame.Click += new System.EventHandler(this.menuExame_Click);
             // 
@@ -131,12 +135,49 @@
             this.btnEditar,
             this.btnExcluir,
             this.btnFiltrar});
-            this.toolStrip.Location = new System.Drawing.Point(0, 24);
+            this.toolStrip.Location = new System.Drawing.Point(0, 25);
             this.toolStrip.Name = "toolStrip";
             this.toolStrip.Padding = new System.Windows.Forms.Padding(0, 5, 1, 5);
             this.toolStrip.Size = new System.Drawing.Size(800, 41);
             this.toolStrip.TabIndex = 1;
             this.toolStrip.Text = "toolStrip1";
+            // 
+            // panelConteudo
+            // 
+            this.panelConteudo.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelConteudo.Location = new System.Drawing.Point(0, 66);
+            this.panelConteudo.Name = "panelConteudo";
+            this.panelConteudo.Size = new System.Drawing.Size(800, 384);
+            this.panelConteudo.TabIndex = 2;
+            // 
+            // panelRodape
+            // 
+            this.panelRodape.Controls.Add(this.txtRodape);
+            this.panelRodape.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panelRodape.Location = new System.Drawing.Point(0, 427);
+            this.panelRodape.Name = "panelRodape";
+            this.panelRodape.Size = new System.Drawing.Size(800, 23);
+            this.panelRodape.TabIndex = 3;
+            // 
+            // txtRodape
+            // 
+            this.txtRodape.AutoSize = true;
+            this.txtRodape.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtRodape.Location = new System.Drawing.Point(4, 3);
+            this.txtRodape.Name = "txtRodape";
+            this.txtRodape.Size = new System.Drawing.Size(46, 16);
+            this.txtRodape.TabIndex = 0;
+            this.txtRodape.Text = "Aviso";
+            // 
+            // labelTipoCadastro
+            // 
+            this.labelTipoCadastro.AutoSize = true;
+            this.labelTipoCadastro.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelTipoCadastro.Location = new System.Drawing.Point(340, 37);
+            this.labelTipoCadastro.Name = "labelTipoCadastro";
+            this.labelTipoCadastro.Size = new System.Drawing.Size(106, 16);
+            this.labelTipoCadastro.TabIndex = 4;
+            this.labelTipoCadastro.Text = "Tipo Cadastro";
             // 
             // btnInserir
             // 
@@ -148,6 +189,7 @@
             this.btnInserir.Name = "btnInserir";
             this.btnInserir.Size = new System.Drawing.Size(28, 28);
             this.btnInserir.Text = "toolStripButton3";
+            this.btnInserir.Click += new System.EventHandler(this.btnInserir_Click);
             // 
             // btnEditar
             // 
@@ -200,43 +242,6 @@
             this.toolStripButton2.Size = new System.Drawing.Size(23, 22);
             this.toolStripButton2.Text = "toolStripButton2";
             // 
-            // panelConteudo
-            // 
-            this.panelConteudo.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelConteudo.Location = new System.Drawing.Point(0, 65);
-            this.panelConteudo.Name = "panelConteudo";
-            this.panelConteudo.Size = new System.Drawing.Size(800, 385);
-            this.panelConteudo.TabIndex = 2;
-            // 
-            // panelRodape
-            // 
-            this.panelRodape.Controls.Add(this.txtRodape);
-            this.panelRodape.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelRodape.Location = new System.Drawing.Point(0, 427);
-            this.panelRodape.Name = "panelRodape";
-            this.panelRodape.Size = new System.Drawing.Size(800, 23);
-            this.panelRodape.TabIndex = 3;
-            // 
-            // txtRodape
-            // 
-            this.txtRodape.AutoSize = true;
-            this.txtRodape.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtRodape.Location = new System.Drawing.Point(4, 3);
-            this.txtRodape.Name = "txtRodape";
-            this.txtRodape.Size = new System.Drawing.Size(46, 16);
-            this.txtRodape.TabIndex = 0;
-            this.txtRodape.Text = "Aviso";
-            // 
-            // labelTipoCadastro
-            // 
-            this.labelTipoCadastro.AutoSize = true;
-            this.labelTipoCadastro.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelTipoCadastro.Location = new System.Drawing.Point(340, 37);
-            this.labelTipoCadastro.Name = "labelTipoCadastro";
-            this.labelTipoCadastro.Size = new System.Drawing.Size(106, 16);
-            this.labelTipoCadastro.TabIndex = 4;
-            this.labelTipoCadastro.Text = "Tipo Cadastro";
-            // 
             // TelaPrincipalForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -248,6 +253,7 @@
             this.Controls.Add(this.toolStrip);
             this.Controls.Add(this.menuStrip1);
             this.Name = "TelaPrincipalForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Gerador de Exames";
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
