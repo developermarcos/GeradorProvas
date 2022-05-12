@@ -1,6 +1,4 @@
-﻿
-using Dominio.GeradorProvas.Compartilhado;
-using Dominio.GeradorProvas.ModuloMateria;
+﻿using Dominio.GeradorProvas.ModuloMateria;
 using FluentValidation;
 using Infra.GeradorProvas.Compartilhado;
 using System.Collections.Generic;

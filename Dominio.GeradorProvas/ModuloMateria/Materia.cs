@@ -3,6 +3,7 @@ using System;
 
 namespace Dominio.GeradorProvas.ModuloMateria
 {
+    [Serializable]
     public class Materia : EntidadeBase<Materia>
     {
         public DiciplinaEnum Disciplina { get; set; }
@@ -26,7 +27,7 @@ namespace Dominio.GeradorProvas.ModuloMateria
 
         public override string ToString()
         {
-            throw new NotImplementedException();
+            return $"Nº: {Numero} | Diclipina {Disciplina} | Matéria: {Descricao}";
         }
     }
 }

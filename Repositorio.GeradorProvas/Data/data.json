@@ -5,17 +5,55 @@
     "$values": [
       {
         "$id": "3",
-        "Disciplina": 2,
+        "Disciplina": 1,
         "Serie": 1,
-        "Descricao": "teste",
+        "Descricao": "Adilção",
         "Numero": 1
       },
       {
         "$id": "4",
-        "Disciplina": 1,
-        "Serie": 3,
-        "Descricao": "efasfaAA",
+        "Disciplina": 2,
+        "Serie": 1,
+        "Descricao": "Adjetivos",
         "Numero": 2
+      }
+    ]
+  },
+  "Questoes": {
+    "$id": "5",
+    "$values": [
+      {
+        "$id": "6",
+        "Materia": {
+          "$ref": "4"
+        },
+        "Pergunta": "A soma de 1 + 1",
+        "Alternativas": {
+          "$id": "7",
+          "$values": [
+            {
+              "$id": "8",
+              "Descricao": "4",
+              "EstaCorreta": false
+            },
+            {
+              "$id": "9",
+              "Descricao": "2",
+              "EstaCorreta": true
+            },
+            {
+              "$id": "10",
+              "Descricao": "3",
+              "EstaCorreta": false
+            },
+            {
+              "$id": "11",
+              "Descricao": "1",
+              "EstaCorreta": false
+            }
+          ]
+        },
+        "Numero": 1
       }
     ]
   }

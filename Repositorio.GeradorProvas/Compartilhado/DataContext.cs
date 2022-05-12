@@ -1,5 +1,6 @@
 ﻿
 using Dominio.GeradorProvas.ModuloMateria;
+using Dominio.GeradorProvas.ModuloQuestao;
 using Infra.GeradorProvas.Compartilhado.Serializador;
 using System;
 using System.Collections.Generic;
@@ -12,22 +13,22 @@ namespace Infra.GeradorProvas.Compartilhado
     public class DataContext //Container
     {
         private readonly ISerializador serializador;
-        private SerializadorDadosEmJsonDotnet serializador1;
 
         public DataContext()
         {
+            Materias = new List<Materia>();
+            Questoes = new List<Questao>();
         }
 
         public DataContext(ISerializador serializador) : this()
         {
             this.serializador = serializador;
 
-            Materias = new List<Materia>();
-
             CarregarDados();
         }
 
         public List<Materia> Materias { get; set; }
+        public List<Questao> Questoes { get; set; }
 
 
         public void GravarDados()
@@ -43,6 +44,9 @@ namespace Infra.GeradorProvas.Compartilhado
             {
                 if (ctx.Materias.Any())
                     this.Materias.AddRange(ctx.Materias);
+
+                if (ctx.Questoes.Any())
+                    this.Questoes.AddRange(ctx.Questoes);
             }
 
         }

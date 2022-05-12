@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Windows.Forms;
 using Infra.GeradorProvas.Compartilhado;
 using Infra.GeradorProvas.ModuloMateria;
+using Infra.GeradorProvas.ModuloQuestao;
 
 namespace Apresentacao.GeradorProvas
 {
@@ -116,10 +117,11 @@ namespace Apresentacao.GeradorProvas
         private void InicializarControladores()
         {
             var repositorioMateria = new RepositorioMateriaEmArquivo(contextoDados);
+            var repositorioQuestao = new RepositorioQuestaoEmArquivo(contextoDados);
 
             controladores = new Dictionary<string, ControladorBase>();
             controladores.Add("Materias", new ControladorMateria(repositorioMateria));
-            controladores.Add("Questões", new ControladorQuestao());
+            controladores.Add("Questões", new ControladorQuestao(repositorioQuestao, repositorioMateria));
             controladores.Add("Exames", new ControladorExame());
         }
 
