@@ -1,0 +1,60 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net5.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWindowsForms>true</UseWindowsForms>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Dominio.GeradorProvas\Dominio.GeradorProvas.csproj" />
+    <ProjectReference Include="..\Repositorio.GeradorProvas\Infra.GeradorProvas.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="ModuloExame\TabelaExameControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="ModuloExame\TelaCadastroExameForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="ModuloExame\TelaFiltroExameForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="ModuloMateria\TabelaMateriaControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="ModuloMateria\TelaCadastroMateriaForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="ModuloMateria\TelaFiltroMateriaForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="ModuloQuestao\TabelaQuestaoControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="ModuloQuestao\TelaCadastroQuestaoForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="ModuloQuestao\TelaFiltroQuestaoForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Properties\Resources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Update="TelaPrincipalForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+
+</Project>

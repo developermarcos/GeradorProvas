@@ -2,7 +2,7 @@
 {
     public enum DiciplinaEnum
     {
-        Matemática,
-        Português
+        Matemática = 1,
+        Português = 2
     }
 }

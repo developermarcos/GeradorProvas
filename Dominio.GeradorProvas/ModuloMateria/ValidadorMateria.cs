@@ -8,7 +8,14 @@ namespace Dominio.GeradorProvas.ModuloMateria
     {
         public ValidadorMateria()
         {
-            //Implimentar validações
+            RuleFor(x => x.Disciplina)
+                .NotEmpty().NotNull();
+
+            RuleFor(x => x.Serie)
+                .NotEmpty().NotNull();
+
+            RuleFor(x => x.Descricao)
+                .NotEmpty().NotNull();
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿namespace GeradorProvas
+﻿namespace Apresentacao.GeradorProvas
 {
     partial class TelaPrincipalForm
     {
@@ -60,7 +60,8 @@
             this.ToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(800, 25);
+            this.menuStrip1.Padding = new System.Windows.Forms.Padding(7, 2, 0, 2);
+            this.menuStrip1.Size = new System.Drawing.Size(933, 25);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -70,7 +71,7 @@
             this.menuMateria,
             this.menuQuestao,
             this.menuExame});
-            this.ToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.ToolStripMenuItem.Name = "ToolStripMenuItem";
             this.ToolStripMenuItem.Size = new System.Drawing.Size(79, 21);
             this.ToolStripMenuItem.Text = "Cadastros";
@@ -137,15 +138,15 @@
             this.btnFiltrar});
             this.toolStrip.Location = new System.Drawing.Point(0, 25);
             this.toolStrip.Name = "toolStrip";
-            this.toolStrip.Padding = new System.Windows.Forms.Padding(0, 5, 1, 5);
-            this.toolStrip.Size = new System.Drawing.Size(800, 41);
+            this.toolStrip.Padding = new System.Windows.Forms.Padding(0, 6, 1, 6);
+            this.toolStrip.Size = new System.Drawing.Size(933, 43);
             this.toolStrip.TabIndex = 1;
             this.toolStrip.Text = "toolStrip1";
             // 
             // btnInserir
             // 
             this.btnInserir.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btnInserir.Image = global::GeradorProvas.Properties.Resources.add;
+            this.btnInserir.Image = global::Apresentacao.GeradorProvas.Properties.Resources.add;
             this.btnInserir.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.btnInserir.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnInserir.Margin = new System.Windows.Forms.Padding(0, 1, 15, 2);
@@ -157,7 +158,7 @@
             // btnEditar
             // 
             this.btnEditar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btnEditar.Image = global::GeradorProvas.Properties.Resources.edit;
+            this.btnEditar.Image = global::Apresentacao.GeradorProvas.Properties.Resources.edit;
             this.btnEditar.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.btnEditar.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnEditar.Margin = new System.Windows.Forms.Padding(0, 1, 15, 2);
@@ -169,7 +170,7 @@
             // btnExcluir
             // 
             this.btnExcluir.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btnExcluir.Image = global::GeradorProvas.Properties.Resources.trash;
+            this.btnExcluir.Image = global::Apresentacao.GeradorProvas.Properties.Resources.trash;
             this.btnExcluir.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.btnExcluir.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnExcluir.Margin = new System.Windows.Forms.Padding(0, 1, 15, 2);
@@ -181,7 +182,7 @@
             // btnFiltrar
             // 
             this.btnFiltrar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btnFiltrar.Image = global::GeradorProvas.Properties.Resources.verify;
+            this.btnFiltrar.Image = global::Apresentacao.GeradorProvas.Properties.Resources.verify;
             this.btnFiltrar.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.btnFiltrar.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnFiltrar.Margin = new System.Windows.Forms.Padding(0, 1, 15, 2);
@@ -193,25 +194,28 @@
             // panelConteudo
             // 
             this.panelConteudo.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelConteudo.Location = new System.Drawing.Point(0, 66);
+            this.panelConteudo.Location = new System.Drawing.Point(0, 68);
+            this.panelConteudo.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.panelConteudo.Name = "panelConteudo";
-            this.panelConteudo.Size = new System.Drawing.Size(800, 384);
+            this.panelConteudo.Size = new System.Drawing.Size(933, 451);
             this.panelConteudo.TabIndex = 2;
             // 
             // panelRodape
             // 
             this.panelRodape.Controls.Add(this.txtRodape);
             this.panelRodape.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelRodape.Location = new System.Drawing.Point(0, 427);
+            this.panelRodape.Location = new System.Drawing.Point(0, 492);
+            this.panelRodape.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.panelRodape.Name = "panelRodape";
-            this.panelRodape.Size = new System.Drawing.Size(800, 23);
+            this.panelRodape.Size = new System.Drawing.Size(933, 27);
             this.panelRodape.TabIndex = 3;
             // 
             // txtRodape
             // 
             this.txtRodape.AutoSize = true;
-            this.txtRodape.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtRodape.Location = new System.Drawing.Point(4, 3);
+            this.txtRodape.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.txtRodape.Location = new System.Drawing.Point(5, 3);
+            this.txtRodape.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.txtRodape.Name = "txtRodape";
             this.txtRodape.Size = new System.Drawing.Size(46, 16);
             this.txtRodape.TabIndex = 0;
@@ -220,8 +224,9 @@
             // labelTipoCadastro
             // 
             this.labelTipoCadastro.AutoSize = true;
-            this.labelTipoCadastro.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelTipoCadastro.Location = new System.Drawing.Point(340, 37);
+            this.labelTipoCadastro.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.labelTipoCadastro.Location = new System.Drawing.Point(397, 43);
+            this.labelTipoCadastro.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelTipoCadastro.Name = "labelTipoCadastro";
             this.labelTipoCadastro.Size = new System.Drawing.Size(106, 16);
             this.labelTipoCadastro.TabIndex = 4;
@@ -247,17 +252,18 @@
             // 
             // TelaPrincipalForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(933, 519);
             this.Controls.Add(this.labelTipoCadastro);
             this.Controls.Add(this.panelRodape);
             this.Controls.Add(this.panelConteudo);
             this.Controls.Add(this.toolStrip);
             this.Controls.Add(this.menuStrip1);
+            this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.Name = "TelaPrincipalForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Gerador de Exames 4.7";
+            this.Text = "Gerador de Exames";
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.toolStrip.ResumeLayout(false);

@@ -5,22 +5,23 @@ namespace Dominio.GeradorProvas.ModuloMateria
 {
     public class Materia : EntidadeBase<Materia>
     {
-        public DiciplinaEnum diciplina;
-        public SerieEnum serie;
-        public string nome;
+        public DiciplinaEnum Disciplina { get; set; }
+        public SerieEnum Serie { get; set; }
+        public string Descricao { get; set; }
 
-        public Materia(DiciplinaEnum diciplina, SerieEnum serie, string nome)
+        public Materia() { }
+        public Materia(DiciplinaEnum Disciplina, SerieEnum serie, string nome)
         {
-            this.diciplina=diciplina;
-            this.serie=serie;
-            this.nome=nome;
+            this.Disciplina=Disciplina;
+            this.Serie=serie;
+            this.Descricao=nome;
         }
 
         public override void Atualizar(Materia registro)
         {
-            this.diciplina=registro.diciplina;
-            this.serie=registro.serie;
-            this.nome=registro.nome;
+            this.Disciplina=registro.Disciplina;
+            this.Serie=registro.Serie;
+            this.Descricao=registro.Descricao;
         }
 
         public override string ToString()

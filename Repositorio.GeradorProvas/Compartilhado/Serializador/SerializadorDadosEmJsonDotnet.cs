@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace Infra.GeradorProvas.Compartilhado.Serializador
 {
-    public class SerializadorDadosEmJsonDotnet
+    public class SerializadorDadosEmJsonDotnet : ISerializador
     {
-        private const string arquivo = @"C:\temp\dados.json";
+        private const string arquivo = @"C:\Users\marco\source\repos\GeradorProvas\Repositorio.GeradorProvas\Data\data.json";
 
         public DataContext CarregarDadosDoArquivo()
         {

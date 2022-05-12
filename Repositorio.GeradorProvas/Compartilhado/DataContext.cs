@@ -12,16 +12,17 @@ namespace Infra.GeradorProvas.Compartilhado
     public class DataContext //Container
     {
         private readonly ISerializador serializador;
+        private SerializadorDadosEmJsonDotnet serializador1;
 
         public DataContext()
         {
-            Materias = new List<Materia>();
-
         }
 
         public DataContext(ISerializador serializador) : this()
         {
             this.serializador = serializador;
+
+            Materias = new List<Materia>();
 
             CarregarDados();
         }
@@ -37,9 +38,12 @@ namespace Infra.GeradorProvas.Compartilhado
         private void CarregarDados()
         {
             var ctx = serializador.CarregarDadosDoArquivo();
-
-            if (ctx.Materias.Any())
-                this.Materias.AddRange(ctx.Materias);
+            
+            if(ctx != null)
+            {
+                if (ctx.Materias.Any())
+                    this.Materias.AddRange(ctx.Materias);
+            }
 
         }
     }

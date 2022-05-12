@@ -1,0 +1,22 @@
+{
+  "$id": "1",
+  "Materias": {
+    "$id": "2",
+    "$values": [
+      {
+        "$id": "3",
+        "Disciplina": 2,
+        "Serie": 1,
+        "Descricao": "teste",
+        "Numero": 1
+      },
+      {
+        "$id": "4",
+        "Disciplina": 1,
+        "Serie": 3,
+        "Descricao": "efasfaAA",
+        "Numero": 2
+      }
+    ]
+  }
+}

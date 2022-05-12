@@ -1,0 +1,22 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace GeradorProvas.ModuloExame
+{
+    public partial class TelaCadastroExameForm : Form
+    {
+        public TelaCadastroExameForm(string nomeTela)
+        {
+            InitializeComponent();
+
+            Text = nomeTela;
+        }
+    }
+}
