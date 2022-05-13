@@ -50,6 +50,7 @@
             this.labelTipoCadastro = new System.Windows.Forms.Label();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
+            this.btnDuplicar = new System.Windows.Forms.ToolStripButton();
             this.menuStrip1.SuspendLayout();
             this.toolStrip.SuspendLayout();
             this.panelRodape.SuspendLayout();
@@ -137,7 +138,8 @@
             this.btnEditar,
             this.btnExcluir,
             this.btnFiltrar,
-            this.btnGerarPdf});
+            this.btnGerarPdf,
+            this.btnDuplicar});
             this.toolStrip.Location = new System.Drawing.Point(0, 25);
             this.toolStrip.Name = "toolStrip";
             this.toolStrip.Padding = new System.Windows.Forms.Padding(0, 6, 1, 6);
@@ -199,6 +201,7 @@
             this.btnGerarPdf.Image = global::Apresentacao.GeradorProvas.Properties.Resources.icon_pdf;
             this.btnGerarPdf.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.btnGerarPdf.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnGerarPdf.Margin = new System.Windows.Forms.Padding(0, 1, 15, 2);
             this.btnGerarPdf.Name = "btnGerarPdf";
             this.btnGerarPdf.Size = new System.Drawing.Size(28, 28);
             this.btnGerarPdf.Text = "toolStripButton3";
@@ -263,6 +266,17 @@
             this.toolStripButton2.Size = new System.Drawing.Size(23, 22);
             this.toolStripButton2.Text = "toolStripButton2";
             // 
+            // btnDuplicar
+            // 
+            this.btnDuplicar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btnDuplicar.Image = global::Apresentacao.GeradorProvas.Properties.Resources.pasta;
+            this.btnDuplicar.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.btnDuplicar.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnDuplicar.Name = "btnDuplicar";
+            this.btnDuplicar.Size = new System.Drawing.Size(28, 28);
+            this.btnDuplicar.Text = "toolStripButton3";
+            this.btnDuplicar.Click += new System.EventHandler(this.btnDuplicar_Click);
+            // 
             // TelaPrincipalForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -311,6 +325,7 @@
         private System.Windows.Forms.Label txtRodape;
         private System.Windows.Forms.Label labelTipoCadastro;
         private System.Windows.Forms.ToolStripButton btnGerarPdf;
+        private System.Windows.Forms.ToolStripButton btnDuplicar;
     }
 }
 

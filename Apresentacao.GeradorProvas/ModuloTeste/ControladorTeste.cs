@@ -52,21 +52,57 @@ namespace GeradorProvas.ModuloTeste
 
         public override void Filtrar()
         {
+            string texto = Microsoft.VisualBasic.Interaction.InputBox("Your Message", "Titulo", "Default Response");
+        }
+
+        public void Duplicar()
+        {
+            Teste testeSelecionado = ObtemTesteSelecionado();
+
+            if (testeSelecionado == null)
+            {
+                MessageBox.Show("Selecione um teste primeiro.",
+                "Gerar PDF de teste", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            string texto = Microsoft.VisualBasic.Interaction.InputBox("Your Message", "Titulo", "Default Response");
+
+            Teste novoTeste = new Teste();
+            
+            novoTeste.Titulo = texto;
+            novoTeste.quantidadeQuestoes = testeSelecionado.quantidadeQuestoes;
+            novoTeste.Serie = testeSelecionado.Serie;
+            novoTeste.Disciplina = testeSelecionado.Disciplina;
+            novoTeste.Questoes = testeSelecionado.Questoes;
+            
+            repositorioTeste.Inserir(novoTeste);
+
+            CarregarTestes();
         }
 
         public void GerarPDF()
         {
+            
             Teste teste = ObtemTesteSelecionado();
 
             if (teste == null)
             {
                 MessageBox.Show("Selecione um teste primeiro.",
-                "Excluir teste", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                "Gerar PDF de teste", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
+            using(SaveFileDialog saveFileDialog = new SaveFileDialog() { Filter = "PDF file|*.pdf", ValidateNames = true })
+            {
+                if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    string pastaSelecioanda = saveFileDialog.FileName;
+                    
+                    GeradorPdfTeste geradorPdf = new GeradorPdfTeste(pastaSelecioanda, teste);
 
-            DialogResult resultado = MessageBox.Show($"Gerar pdf do teste ({teste.Titulo})?",
-                "Gerar PDF", MessageBoxButtons.OK, MessageBoxIcon.Question);
+                    geradorPdf.GerarPdf();
+                }
+            }
         }
 
         public override void Inserir()
@@ -79,6 +115,7 @@ namespace GeradorProvas.ModuloTeste
 
 
             DialogResult resultado = telaCadastro.ShowDialog();
+
             if(DialogResult.OK == resultado)
             {
                 List<Questao> questoesFiltradas = ObterListaQuestoesComFiltros(telaCadastro.Teste);
@@ -107,19 +144,19 @@ namespace GeradorProvas.ModuloTeste
 
         private List<Questao> ObterQuestoesRandomicas(List<Questao> questoesFiltradas, int quantidadeQuestoes)
         {
-            if (questoesFiltradas.Count < quantidadeQuestoes)
-                return questoesFiltradas;
-
             List<Questao> questaoRandomicas = new List<Questao>();
 
             Random numero = new Random();
 
-            while (questaoRandomicas.Count != quantidadeQuestoes)
+            if(quantidadeQuestoes <= questoesFiltradas.Count)
             {
-                int ranNum = numero.Next(0, (quantidadeQuestoes - 1));
+                while (questaoRandomicas.Count != quantidadeQuestoes)
+                {
+                    int ranNum = numero.Next(0, (quantidadeQuestoes - 1));
 
-                if(questaoRandomicas.Exists(x => x != questoesFiltradas[ranNum]))
-                    questaoRandomicas.Add(questoesFiltradas[ranNum]);
+                    if (questaoRandomicas.Exists(x => x != questoesFiltradas[ranNum]))
+                        questaoRandomicas.Add(questoesFiltradas[ranNum]);
+                }
             }
 
             return questaoRandomicas;

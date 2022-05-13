@@ -157,5 +157,14 @@ namespace Apresentacao.GeradorProvas
                 controladorTeste.GerarPDF();
             }
         }
+
+        private void btnDuplicar_Click(object sender, EventArgs e)
+        {
+            if (controlador is ControladorTeste)
+            {
+                ControladorTeste controladorTeste = (ControladorTeste)controlador;
+                controladorTeste.Duplicar();
+            }
+        }
     }
 }
