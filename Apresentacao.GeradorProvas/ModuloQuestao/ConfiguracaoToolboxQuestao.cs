@@ -19,6 +19,8 @@ namespace GeradorProvas.ModuloQuestao
 
         public override string TooltipFiltrar => "Filtrar questão";
 
+        public override string TooltipGerarPdf => "Gerar PDF";
+
         public override bool FiltrarHabilitado { get { return true; } }
     }
 }

@@ -1,6 +1,6 @@
-﻿namespace GeradorProvas.ModuloExame
+﻿namespace GeradorProvas.ModuloTeste
 {
-    partial class TelaFiltroExameForm
+    partial class TelaFiltroTesteForm
     {
         /// <summary>
         /// Required designer variable.

@@ -1,5 +1,4 @@
 ﻿using GeradorProvas.Compartilhado;
-using GeradorProvas.ModuloExame;
 using GeradorProvas.ModuloMateria;
 using GeradorProvas.ModuloQuestao;
 using System;
@@ -8,6 +7,8 @@ using System.Windows.Forms;
 using Infra.GeradorProvas.Compartilhado;
 using Infra.GeradorProvas.ModuloMateria;
 using Infra.GeradorProvas.ModuloQuestao;
+using Infra.GeradorProvas.ModuloTeste;
+using GeradorProvas.ModuloTeste;
 
 namespace Apresentacao.GeradorProvas
 {
@@ -91,6 +92,7 @@ namespace Apresentacao.GeradorProvas
             btnEditar.Enabled = configuracao.EditarHabilitado;
             btnExcluir.Enabled = configuracao.ExcluirHabilitado;
             btnFiltrar.Enabled = configuracao.FiltrarHabilitado;
+            btnGerarPdf.Enabled = configuracao.PdfHabilitado;
         }
 
         private void ConfigurarTooltips(ConfiguracaoToolboxBase configuracao)
@@ -99,6 +101,7 @@ namespace Apresentacao.GeradorProvas
             btnEditar.ToolTipText = configuracao.TooltipEditar;
             btnExcluir.ToolTipText = configuracao.TooltipExcluir;
             btnFiltrar.ToolTipText = configuracao.TooltipFiltrar;
+            btnGerarPdf.ToolTipText = configuracao.TooltipGerarPdf;
         }
 
         private void ConfigurarListagem()
@@ -118,11 +121,12 @@ namespace Apresentacao.GeradorProvas
         {
             var repositorioMateria = new RepositorioMateriaEmArquivo(contextoDados);
             var repositorioQuestao = new RepositorioQuestaoEmArquivo(contextoDados);
+            var repositorioTeste = new RepositorioTesteEmArquivo(contextoDados);
 
             controladores = new Dictionary<string, ControladorBase>();
             controladores.Add("Materias", new ControladorMateria(repositorioMateria));
             controladores.Add("Questões", new ControladorQuestao(repositorioQuestao, repositorioMateria));
-            controladores.Add("Exames", new ControladorExame());
+            controladores.Add("Testes", new ControladorTeste(repositorioTeste, repositorioQuestao, repositorioMateria));
         }
 
         private void btnInserir_Click(object sender, EventArgs e)
@@ -143,6 +147,15 @@ namespace Apresentacao.GeradorProvas
         private void btnFiltrar_Click(object sender, EventArgs e)
         {
             controlador.Filtrar();
+        }
+
+        private void btnGerarPdf_Click(object sender, EventArgs e)
+        {
+            if(controlador is ControladorTeste)
+            {
+                ControladorTeste controladorTeste = (ControladorTeste)controlador;
+                controladorTeste.GerarPDF();
+            }
         }
     }
 }

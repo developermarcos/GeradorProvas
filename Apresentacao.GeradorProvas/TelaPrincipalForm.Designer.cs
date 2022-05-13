@@ -43,6 +43,7 @@
             this.btnEditar = new System.Windows.Forms.ToolStripButton();
             this.btnExcluir = new System.Windows.Forms.ToolStripButton();
             this.btnFiltrar = new System.Windows.Forms.ToolStripButton();
+            this.btnGerarPdf = new System.Windows.Forms.ToolStripButton();
             this.panelConteudo = new System.Windows.Forms.Panel();
             this.panelRodape = new System.Windows.Forms.Panel();
             this.txtRodape = new System.Windows.Forms.Label();
@@ -97,7 +98,7 @@
             this.menuExame.Name = "menuExame";
             this.menuExame.ShortcutKeys = System.Windows.Forms.Keys.F3;
             this.menuExame.Size = new System.Drawing.Size(152, 22);
-            this.menuExame.Text = "Exames";
+            this.menuExame.Text = "Testes";
             this.menuExame.Click += new System.EventHandler(this.menuExame_Click);
             // 
             // cadastrosToolStripMenuItem
@@ -135,7 +136,8 @@
             this.btnInserir,
             this.btnEditar,
             this.btnExcluir,
-            this.btnFiltrar});
+            this.btnFiltrar,
+            this.btnGerarPdf});
             this.toolStrip.Location = new System.Drawing.Point(0, 25);
             this.toolStrip.Name = "toolStrip";
             this.toolStrip.Padding = new System.Windows.Forms.Padding(0, 6, 1, 6);
@@ -190,6 +192,17 @@
             this.btnFiltrar.Size = new System.Drawing.Size(28, 28);
             this.btnFiltrar.Text = "toolStripButton6";
             this.btnFiltrar.Click += new System.EventHandler(this.btnFiltrar_Click);
+            // 
+            // btnGerarPdf
+            // 
+            this.btnGerarPdf.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btnGerarPdf.Image = global::Apresentacao.GeradorProvas.Properties.Resources.icon_pdf;
+            this.btnGerarPdf.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.btnGerarPdf.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnGerarPdf.Name = "btnGerarPdf";
+            this.btnGerarPdf.Size = new System.Drawing.Size(28, 28);
+            this.btnGerarPdf.Text = "toolStripButton3";
+            this.btnGerarPdf.Click += new System.EventHandler(this.btnGerarPdf_Click);
             // 
             // panelConteudo
             // 
@@ -297,6 +310,7 @@
         private System.Windows.Forms.Panel panelRodape;
         private System.Windows.Forms.Label txtRodape;
         private System.Windows.Forms.Label labelTipoCadastro;
+        private System.Windows.Forms.ToolStripButton btnGerarPdf;
     }
 }
 

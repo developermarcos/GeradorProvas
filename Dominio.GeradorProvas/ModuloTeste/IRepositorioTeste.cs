@@ -1,4 +1,5 @@
 ﻿using Dominio.GeradorProvas.Compartilhado;
+using Dominio.GeradorProvas.ModuloQuestao;
 using System;
 using System.Collections.Generic;
 using System.Linq;

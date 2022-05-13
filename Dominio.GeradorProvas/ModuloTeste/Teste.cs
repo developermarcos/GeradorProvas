@@ -8,25 +8,25 @@ namespace Dominio.GeradorProvas.ModuloTeste
     [Serializable]
     public class Teste : EntidadeBase<Teste>
     {
+        public string Titulo { get; set; }
         public DiciplinaEnum Disciplina { get; set; }
         public SerieEnum Serie { get; set; }
-        public int quantidadeQuestoes;
-        List<Questao> questoes;
+        public int quantidadeQuestoes { get; set; }
+        public List<ModuloQuestao.Questao> Questoes { get; set; }
 
         public Teste() { }
-        
 
         public override void Atualizar(Teste registro)
         {
             this.Disciplina=registro.Disciplina;
             this.Serie=registro.Serie;
             this.quantidadeQuestoes=registro.quantidadeQuestoes;
-            this.questoes = registro.questoes;
+            this.Questoes = registro.Questoes;
         }
 
         public override string ToString()
         {
-            return $"Nº: {Numero} | Diclipina {Disciplina} | Qtd. Questões: {quantidadeQuestoes}";
+            return $"Nº: {Numero} | Nome: {Titulo} | Diclipina {Disciplina} | Qtd. Questões: {quantidadeQuestoes}";
         }
     }
 }

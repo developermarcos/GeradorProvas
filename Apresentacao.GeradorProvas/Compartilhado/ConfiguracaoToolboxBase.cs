@@ -17,6 +17,7 @@ namespace GeradorProvas.Compartilhado
         public abstract string TooltipExcluir { get; }
 
         public abstract string TooltipFiltrar { get; }
+        public abstract string TooltipGerarPdf { get; }
 
         public virtual bool InserirHabilitado { get { return true; } }
 
@@ -25,6 +26,7 @@ namespace GeradorProvas.Compartilhado
         public virtual bool ExcluirHabilitado { get { return true; } }
 
         public virtual bool FiltrarHabilitado { get { return false; } }
+        public virtual bool PdfHabilitado { get { return false; } }
 
     }
 }

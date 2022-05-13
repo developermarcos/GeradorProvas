@@ -52,7 +52,7 @@ namespace GeradorProvas.ModuloMateria
 
            
 
-            DialogResult resultado = MessageBox.Show("Deseja realmente excluir essa matéria?", 
+            DialogResult resultado = MessageBox.Show($"Deseja realmente excluir essa matéria ({materiaSelecionada.Descricao})?", 
                 "Excluir matéria", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
 
             if (resultado == DialogResult.OK)
@@ -69,6 +69,7 @@ namespace GeradorProvas.ModuloMateria
             telaFiltro.ShowDialog();
         }
 
+        
         public override void Inserir()
         {
             TelaCadastroMateriaForm telaCadastro = new TelaCadastroMateriaForm("Cadastrar Matéria");

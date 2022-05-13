@@ -101,5 +101,6 @@ namespace GeradorProvas.ModuloQuestao
         }
 
         public Func<Questao, ValidationResult> GravarRegistro { get; set; }
+
     }
 }

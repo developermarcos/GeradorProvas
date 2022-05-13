@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GeradorProvas.ModuloExame
+namespace GeradorProvas.ModuloTeste
 {
-    internal class ConfiguracaoToolboxExame : ConfiguracaoToolboxBase
+    internal class ConfiguracaoToolboxTeste : ConfiguracaoToolboxBase
     {
         public override string TipoCadastro => "Listagem Exames";
 
@@ -19,7 +19,12 @@ namespace GeradorProvas.ModuloExame
 
         public override string TooltipFiltrar => "Filtrar exame";
 
+        public override string TooltipGerarPdf => "Gerar PDF";
+
         public override bool FiltrarHabilitado => true;
+
         public override bool EditarHabilitado => false;
+
+        public override bool PdfHabilitado => true;
     }
 }

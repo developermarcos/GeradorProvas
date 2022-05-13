@@ -19,7 +19,8 @@ namespace GeradorProvas.ModuloMateria
 
         public override string TooltipFiltrar => "Filtrar materias";
 
-        public override bool FiltrarHabilitado { get { return true; } }
+        public override string TooltipGerarPdf => "Gerar PDF";
 
+        public override bool FiltrarHabilitado { get { return true; } }
     }
 }

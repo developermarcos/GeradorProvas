@@ -1,6 +1,6 @@
-﻿namespace GeradorProvas.ModuloExame
+﻿namespace GeradorProvas.ModuloTeste
 {
-    partial class TelaCadastroExameForm
+    partial class TelaCadastroTesteForm
     {
         /// <summary>
         /// Required designer variable.
@@ -31,18 +31,20 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.cBoxDiciplina = new System.Windows.Forms.ComboBox();
+            this.cBoxSerie = new System.Windows.Forms.ComboBox();
+            this.numericUpDownQuantidade = new System.Windows.Forms.NumericUpDown();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnGravar = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            this.label3 = new System.Windows.Forms.Label();
+            this.txtboxTitulo = new System.Windows.Forms.TextBox();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownQuantidade)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(48, 15);
+            this.label1.Location = new System.Drawing.Point(46, 55);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(53, 15);
@@ -52,7 +54,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(66, 53);
+            this.label2.Location = new System.Drawing.Point(64, 93);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(32, 15);
@@ -62,38 +64,38 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(15, 90);
+            this.label4.Location = new System.Drawing.Point(13, 130);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(82, 15);
             this.label4.TabIndex = 3;
             this.label4.Text = "Qtd. Questões";
             // 
-            // comboBox1
+            // cBoxDiciplina
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(110, 12);
-            this.comboBox1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(322, 23);
-            this.comboBox1.TabIndex = 4;
+            this.cBoxDiciplina.FormattingEnabled = true;
+            this.cBoxDiciplina.Location = new System.Drawing.Point(108, 52);
+            this.cBoxDiciplina.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.cBoxDiciplina.Name = "cBoxDiciplina";
+            this.cBoxDiciplina.Size = new System.Drawing.Size(322, 23);
+            this.cBoxDiciplina.TabIndex = 4;
             // 
-            // comboBox2
+            // cBoxSerie
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(110, 50);
-            this.comboBox2.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(129, 23);
-            this.comboBox2.TabIndex = 5;
+            this.cBoxSerie.FormattingEnabled = true;
+            this.cBoxSerie.Location = new System.Drawing.Point(108, 90);
+            this.cBoxSerie.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.cBoxSerie.Name = "cBoxSerie";
+            this.cBoxSerie.Size = new System.Drawing.Size(129, 23);
+            this.cBoxSerie.TabIndex = 5;
             // 
-            // numericUpDown1
+            // numericUpDownQuantidade
             // 
-            this.numericUpDown1.Location = new System.Drawing.Point(110, 90);
-            this.numericUpDown1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(57, 23);
-            this.numericUpDown1.TabIndex = 7;
+            this.numericUpDownQuantidade.Location = new System.Drawing.Point(108, 130);
+            this.numericUpDownQuantidade.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.numericUpDownQuantidade.Name = "numericUpDownQuantidade";
+            this.numericUpDownQuantidade.Size = new System.Drawing.Size(57, 23);
+            this.numericUpDownQuantidade.TabIndex = 7;
             // 
             // btnCancelar
             // 
@@ -122,27 +124,47 @@
             this.btnGravar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnGravar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnGravar.UseVisualStyleBackColor = true;
+            this.btnGravar.Click += new System.EventHandler(this.btnGravar_Click);
             // 
-            // TelaCadastroExameForm
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(58, 18);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(37, 15);
+            this.label3.TabIndex = 10;
+            this.label3.Text = "Título";
+            // 
+            // txtboxTitulo
+            // 
+            this.txtboxTitulo.Location = new System.Drawing.Point(108, 15);
+            this.txtboxTitulo.Name = "txtboxTitulo";
+            this.txtboxTitulo.Size = new System.Drawing.Size(323, 23);
+            this.txtboxTitulo.TabIndex = 11;
+            // 
+            // TelaCadastroTesteForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(443, 243);
+            this.Controls.Add(this.txtboxTitulo);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnGravar);
-            this.Controls.Add(this.numericUpDown1);
-            this.Controls.Add(this.comboBox2);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.numericUpDownQuantidade);
+            this.Controls.Add(this.cBoxSerie);
+            this.Controls.Add(this.cBoxDiciplina);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "TelaCadastroExameForm";
+            this.Name = "TelaCadastroTesteForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "TelaCadastroExameForm";
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownQuantidade)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -153,10 +175,12 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.ComboBox comboBox2;
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
+        private System.Windows.Forms.ComboBox cBoxDiciplina;
+        private System.Windows.Forms.ComboBox cBoxSerie;
+        private System.Windows.Forms.NumericUpDown numericUpDownQuantidade;
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.Button btnGravar;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox txtboxTitulo;
     }
 }

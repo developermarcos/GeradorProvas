@@ -14,8 +14,6 @@ namespace Dominio.GeradorProvas.ModuloTeste
             RuleFor(x => x.Serie)
                 .NotEmpty().NotNull();
 
-            RuleFor(x => x.Descricao)
-                .NotEmpty().NotNull();
         }
     }
 }
