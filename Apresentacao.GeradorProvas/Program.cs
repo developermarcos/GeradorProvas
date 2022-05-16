@@ -7,7 +7,9 @@ namespace Apresentacao.GeradorProvas
 {
     internal static class Program
     {
-        static SerializadorDadosEmJsonDotnet serializador = new SerializadorDadosEmJsonDotnet();
+        //static string caminho = @"C:\Users\marco\source\repos\GeradorProvas\Repositorio.GeradorProvas\Data\data.json";
+        static string caminho = @"C:\Windows\Temp\data.json";
+        static SerializadorDadosEmJsonDotnet serializador = new SerializadorDadosEmJsonDotnet(caminho);
         static DataContext contextoDados = new DataContext(serializador);
         /// <summary>
         ///  The main entry point for the application.

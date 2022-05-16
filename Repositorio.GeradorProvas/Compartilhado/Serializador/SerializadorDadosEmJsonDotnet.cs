@@ -11,8 +11,11 @@ namespace Infra.GeradorProvas.Compartilhado.Serializador
 {
     public class SerializadorDadosEmJsonDotnet : ISerializador
     {
-        private const string arquivo = @"C:\Users\marco\source\repos\GeradorProvas\Repositorio.GeradorProvas\Data\data.json";
-
+        private string arquivo;
+        public SerializadorDadosEmJsonDotnet(string caminho)
+        {
+            this.arquivo = caminho;
+        }
         public DataContext CarregarDadosDoArquivo()
         {
             if (File.Exists(arquivo) == false)
