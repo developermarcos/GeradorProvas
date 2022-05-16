@@ -38,7 +38,11 @@
             this.btnGravar = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.txtboxTitulo = new System.Windows.Forms.TextBox();
+            this.btnVerificar = new System.Windows.Forms.Button();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.qtdQuestoesExistentes = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownQuantidade)).BeginInit();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -80,6 +84,7 @@
             this.cBoxDiciplina.Name = "cBoxDiciplina";
             this.cBoxDiciplina.Size = new System.Drawing.Size(322, 23);
             this.cBoxDiciplina.TabIndex = 4;
+            this.cBoxDiciplina.SelectedIndexChanged += new System.EventHandler(this.cBoxDiciplina_SelectedIndexChanged);
             // 
             // cBoxSerie
             // 
@@ -90,6 +95,7 @@
             this.cBoxSerie.Name = "cBoxSerie";
             this.cBoxSerie.Size = new System.Drawing.Size(129, 23);
             this.cBoxSerie.TabIndex = 5;
+            this.cBoxSerie.SelectedIndexChanged += new System.EventHandler(this.cBoxSerie_SelectedIndexChanged);
             // 
             // numericUpDownQuantidade
             // 
@@ -104,7 +110,7 @@
             this.btnCancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnCancelar.Image = global::Apresentacao.GeradorProvas.Properties.Resources.cancel;
             this.btnCancelar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnCancelar.Location = new System.Drawing.Point(250, 175);
+            this.btnCancelar.Location = new System.Drawing.Point(250, 241);
             this.btnCancelar.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(134, 54);
@@ -117,7 +123,7 @@
             // 
             this.btnGravar.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.btnGravar.Image = global::Apresentacao.GeradorProvas.Properties.Resources.pasta;
-            this.btnGravar.Location = new System.Drawing.Point(58, 175);
+            this.btnGravar.Location = new System.Drawing.Point(58, 241);
             this.btnGravar.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btnGravar.Name = "btnGravar";
             this.btnGravar.Size = new System.Drawing.Size(134, 54);
@@ -145,11 +151,42 @@
             this.txtboxTitulo.Size = new System.Drawing.Size(323, 23);
             this.txtboxTitulo.TabIndex = 11;
             // 
+            // btnVerificar
+            // 
+            this.btnVerificar.Location = new System.Drawing.Point(18, 22);
+            this.btnVerificar.Name = "btnVerificar";
+            this.btnVerificar.Size = new System.Drawing.Size(75, 32);
+            this.btnVerificar.TabIndex = 12;
+            this.btnVerificar.Text = "Verificar";
+            this.btnVerificar.UseVisualStyleBackColor = true;
+            this.btnVerificar.Click += new System.EventHandler(this.btnVerificar_Click);
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.qtdQuestoesExistentes);
+            this.groupBox1.Controls.Add(this.btnVerificar);
+            this.groupBox1.Location = new System.Drawing.Point(13, 159);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(271, 66);
+            this.groupBox1.TabIndex = 14;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Verificar quantidade de questões disponíveis";
+            // 
+            // qtdQuestoesExistentes
+            // 
+            this.qtdQuestoesExistentes.AutoSize = true;
+            this.qtdQuestoesExistentes.Location = new System.Drawing.Point(99, 31);
+            this.qtdQuestoesExistentes.Name = "qtdQuestoesExistentes";
+            this.qtdQuestoesExistentes.Size = new System.Drawing.Size(135, 15);
+            this.qtdQuestoesExistentes.TabIndex = 13;
+            this.qtdQuestoesExistentes.Text = "Quantidade de questões";
+            // 
             // TelaCadastroTesteForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(443, 243);
+            this.ClientSize = new System.Drawing.Size(443, 308);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.txtboxTitulo);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.btnCancelar);
@@ -167,6 +204,8 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "TelaCadastroExameForm";
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownQuantidade)).EndInit();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -184,5 +223,8 @@
         private System.Windows.Forms.Button btnGravar;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtboxTitulo;
+        private System.Windows.Forms.Button btnVerificar;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Label qtdQuestoesExistentes;
     }
 }

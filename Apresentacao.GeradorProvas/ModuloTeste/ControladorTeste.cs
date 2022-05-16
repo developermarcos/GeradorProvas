@@ -66,19 +66,24 @@ namespace GeradorProvas.ModuloTeste
                 return;
             }
 
-            string texto = Microsoft.VisualBasic.Interaction.InputBox("Your Message", "Titulo", "Default Response");
+            string texto = Microsoft.VisualBasic.Interaction.InputBox("Informe o novo título", "Titulo", "");
 
-            Teste novoTeste = new Teste();
-            
-            novoTeste.Titulo = texto;
-            novoTeste.quantidadeQuestoes = testeSelecionado.quantidadeQuestoes;
-            novoTeste.Serie = testeSelecionado.Serie;
-            novoTeste.Disciplina = testeSelecionado.Disciplina;
-            novoTeste.Questoes = testeSelecionado.Questoes;
-            
-            repositorioTeste.Inserir(novoTeste);
+            if(texto != "")
+            {
+                Teste novoTeste = new Teste();
 
-            CarregarTestes();
+                novoTeste.Titulo = texto;
+                novoTeste.quantidadeQuestoes = testeSelecionado.quantidadeQuestoes;
+                novoTeste.Serie = testeSelecionado.Serie;
+                novoTeste.Disciplina = testeSelecionado.Disciplina;
+                novoTeste.Questoes = testeSelecionado.Questoes;
+
+                repositorioTeste.Inserir(novoTeste);
+
+                CarregarTestes();
+            }
+
+            
         }
 
         public void GerarPDF()
@@ -107,7 +112,7 @@ namespace GeradorProvas.ModuloTeste
 
         public override void Inserir()
         {
-            TelaCadastroTesteForm telaCadastro = new TelaCadastroTesteForm("Cadastro exame");
+            TelaCadastroTesteForm telaCadastro = new TelaCadastroTesteForm("Cadastro exame", repositorioQuestao.SelecionarTodos());
 
             Teste teste = new Teste();
 
@@ -118,7 +123,7 @@ namespace GeradorProvas.ModuloTeste
 
             if(DialogResult.OK == resultado)
             {
-                List<Questao> questoesFiltradas = ObterListaQuestoesComFiltros(telaCadastro.Teste);
+                List<Questao> questoesFiltradas = telaCadastro.ObterListaQuestoesComFiltro();
 
                 if(questoesFiltradas == null || questoesFiltradas.Count == 0)
                 {
@@ -162,23 +167,6 @@ namespace GeradorProvas.ModuloTeste
             
 
             return questaoRandomicas;
-        }
-
-        private List<Questao> ObterListaQuestoesComFiltros(Teste Teste)
-        {
-            try { 
-                List<Questao> questaos = repositorioQuestao.SelecionarTodos();
-
-                List<Questao> questaosPorDisciplina = (List<Questao>)questaos.FindAll(x => x.Materia.Disciplina == Teste.Disciplina);
-
-                List<Questao> questaosPorDiciplinaSerie = (List<Questao>)questaosPorDisciplina.FindAll(x => x.Materia.Serie == Teste.Serie);
-
-                return questaosPorDiciplinaSerie;
-            }
-            catch(Exception e)
-            {
-                return new List<Questao>();
-            }
         }
 
         public override ConfiguracaoToolboxBase ObterConfiguracaoToolbox()
