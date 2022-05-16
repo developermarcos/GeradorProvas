@@ -44,13 +44,13 @@
             this.btnExcluir = new System.Windows.Forms.ToolStripButton();
             this.btnFiltrar = new System.Windows.Forms.ToolStripButton();
             this.btnGerarPdf = new System.Windows.Forms.ToolStripButton();
+            this.btnDuplicar = new System.Windows.Forms.ToolStripButton();
             this.panelConteudo = new System.Windows.Forms.Panel();
             this.panelRodape = new System.Windows.Forms.Panel();
             this.txtRodape = new System.Windows.Forms.Label();
             this.labelTipoCadastro = new System.Windows.Forms.Label();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
-            this.btnDuplicar = new System.Windows.Forms.ToolStripButton();
             this.menuStrip1.SuspendLayout();
             this.toolStrip.SuspendLayout();
             this.panelRodape.SuspendLayout();
@@ -207,6 +207,17 @@
             this.btnGerarPdf.Text = "toolStripButton3";
             this.btnGerarPdf.Click += new System.EventHandler(this.btnGerarPdf_Click);
             // 
+            // btnDuplicar
+            // 
+            this.btnDuplicar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btnDuplicar.Image = global::Apresentacao.GeradorProvas.Properties.Resources.duplicate;
+            this.btnDuplicar.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.btnDuplicar.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnDuplicar.Name = "btnDuplicar";
+            this.btnDuplicar.Size = new System.Drawing.Size(28, 28);
+            this.btnDuplicar.Text = "toolStripButton3";
+            this.btnDuplicar.Click += new System.EventHandler(this.btnDuplicar_Click);
+            // 
             // panelConteudo
             // 
             this.panelConteudo.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -265,17 +276,6 @@
             this.toolStripButton2.Name = "toolStripButton2";
             this.toolStripButton2.Size = new System.Drawing.Size(23, 22);
             this.toolStripButton2.Text = "toolStripButton2";
-            // 
-            // btnDuplicar
-            // 
-            this.btnDuplicar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btnDuplicar.Image = global::Apresentacao.GeradorProvas.Properties.Resources.pasta;
-            this.btnDuplicar.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.btnDuplicar.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnDuplicar.Name = "btnDuplicar";
-            this.btnDuplicar.Size = new System.Drawing.Size(28, 28);
-            this.btnDuplicar.Text = "toolStripButton3";
-            this.btnDuplicar.Click += new System.EventHandler(this.btnDuplicar_Click);
             // 
             // TelaPrincipalForm
             // 

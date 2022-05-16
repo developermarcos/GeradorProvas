@@ -30,7 +30,7 @@
         {
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.cBoxMateria = new System.Windows.Forms.ComboBox();
+            this.cBoxDiciplina = new System.Windows.Forms.ComboBox();
             this.textBoxDescricao = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -43,6 +43,8 @@
             this.listaAlternativas = new System.Windows.Forms.ListBox();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnGravar = new System.Windows.Forms.Button();
+            this.cBoxMateria = new System.Windows.Forms.ComboBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -53,36 +55,39 @@
             this.label1.Location = new System.Drawing.Point(31, 22);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(47, 15);
+            this.label1.Size = new System.Drawing.Size(53, 15);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Matéria";
+            this.label1.Text = "Diciplina";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(16, 60);
+            this.label2.Location = new System.Drawing.Point(16, 92);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(58, 15);
             this.label2.TabIndex = 1;
             this.label2.Text = "Descrição";
             // 
-            // cBoxMateria
+            // cBoxDiciplina
             // 
-            this.cBoxMateria.FormattingEnabled = true;
-            this.cBoxMateria.Location = new System.Drawing.Point(100, 22);
-            this.cBoxMateria.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.cBoxMateria.Name = "cBoxMateria";
-            this.cBoxMateria.Size = new System.Drawing.Size(240, 23);
-            this.cBoxMateria.TabIndex = 3;
+            this.cBoxDiciplina.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cBoxDiciplina.FormattingEnabled = true;
+            this.cBoxDiciplina.Location = new System.Drawing.Point(100, 22);
+            this.cBoxDiciplina.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.cBoxDiciplina.Name = "cBoxDiciplina";
+            this.cBoxDiciplina.Size = new System.Drawing.Size(240, 23);
+            this.cBoxDiciplina.TabIndex = 1;
+            this.cBoxDiciplina.SelectedIndexChanged += new System.EventHandler(this.cBoxDiciplina_SelectedIndexChanged);
+            this.cBoxDiciplina.Leave += new System.EventHandler(this.cBoxDiciplina_Leave);
             // 
             // textBoxDescricao
             // 
-            this.textBoxDescricao.Location = new System.Drawing.Point(100, 60);
+            this.textBoxDescricao.Location = new System.Drawing.Point(100, 92);
             this.textBoxDescricao.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.textBoxDescricao.Name = "textBoxDescricao";
             this.textBoxDescricao.Size = new System.Drawing.Size(487, 23);
-            this.textBoxDescricao.TabIndex = 4;
+            this.textBoxDescricao.TabIndex = 3;
             // 
             // groupBox1
             // 
@@ -91,7 +96,7 @@
             this.groupBox1.Controls.Add(this.rBtnFalso);
             this.groupBox1.Controls.Add(this.rBtnVerdade);
             this.groupBox1.Controls.Add(this.textBoxAlternativa);
-            this.groupBox1.Location = new System.Drawing.Point(20, 103);
+            this.groupBox1.Location = new System.Drawing.Point(20, 136);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(4, 3, 4, 3);
@@ -117,7 +122,7 @@
             this.btnAdicionar.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btnAdicionar.Name = "btnAdicionar";
             this.btnAdicionar.Size = new System.Drawing.Size(122, 46);
-            this.btnAdicionar.TabIndex = 9;
+            this.btnAdicionar.TabIndex = 7;
             this.btnAdicionar.Text = "Adicionar";
             this.btnAdicionar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnAdicionar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -132,7 +137,7 @@
             this.rBtnFalso.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.rBtnFalso.Name = "rBtnFalso";
             this.rBtnFalso.Size = new System.Drawing.Size(51, 19);
-            this.rBtnFalso.TabIndex = 8;
+            this.rBtnFalso.TabIndex = 6;
             this.rBtnFalso.TabStop = true;
             this.rBtnFalso.Text = "Falsa";
             this.rBtnFalso.UseVisualStyleBackColor = true;
@@ -144,7 +149,8 @@
             this.rBtnVerdade.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.rBtnVerdade.Name = "rBtnVerdade";
             this.rBtnVerdade.Size = new System.Drawing.Size(80, 19);
-            this.rBtnVerdade.TabIndex = 7;
+            this.rBtnVerdade.TabIndex = 5;
+            this.rBtnVerdade.TabStop = true;
             this.rBtnVerdade.Text = "Verdadeira";
             this.rBtnVerdade.UseVisualStyleBackColor = true;
             // 
@@ -154,13 +160,13 @@
             this.textBoxAlternativa.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.textBoxAlternativa.Name = "textBoxAlternativa";
             this.textBoxAlternativa.Size = new System.Drawing.Size(481, 23);
-            this.textBoxAlternativa.TabIndex = 6;
+            this.textBoxAlternativa.TabIndex = 4;
             // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.btnExcluir);
             this.groupBox2.Controls.Add(this.listaAlternativas);
-            this.groupBox2.Location = new System.Drawing.Point(20, 211);
+            this.groupBox2.Location = new System.Drawing.Point(20, 250);
             this.groupBox2.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Padding = new System.Windows.Forms.Padding(4, 3, 4, 3);
@@ -176,7 +182,7 @@
             this.btnExcluir.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btnExcluir.Name = "btnExcluir";
             this.btnExcluir.Size = new System.Drawing.Size(122, 46);
-            this.btnExcluir.TabIndex = 2;
+            this.btnExcluir.TabIndex = 9;
             this.btnExcluir.Text = "Excluir";
             this.btnExcluir.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnExcluir.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -191,7 +197,7 @@
             this.listaAlternativas.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.listaAlternativas.Name = "listaAlternativas";
             this.listaAlternativas.Size = new System.Drawing.Size(409, 244);
-            this.listaAlternativas.TabIndex = 0;
+            this.listaAlternativas.TabIndex = 8;
             // 
             // btnCancelar
             // 
@@ -202,7 +208,7 @@
             this.btnCancelar.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(134, 54);
-            this.btnCancelar.TabIndex = 9;
+            this.btnCancelar.TabIndex = 11;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnCancelar.UseVisualStyleBackColor = true;
@@ -215,24 +221,46 @@
             this.btnGravar.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btnGravar.Name = "btnGravar";
             this.btnGravar.Size = new System.Drawing.Size(134, 54);
-            this.btnGravar.TabIndex = 8;
+            this.btnGravar.TabIndex = 10;
             this.btnGravar.Text = "Gravar";
             this.btnGravar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnGravar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnGravar.UseVisualStyleBackColor = true;
             this.btnGravar.Click += new System.EventHandler(this.btnGravar_Click);
             // 
+            // cBoxMateria
+            // 
+            this.cBoxMateria.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cBoxMateria.FormattingEnabled = true;
+            this.cBoxMateria.Location = new System.Drawing.Point(100, 57);
+            this.cBoxMateria.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.cBoxMateria.Name = "cBoxMateria";
+            this.cBoxMateria.Size = new System.Drawing.Size(240, 23);
+            this.cBoxMateria.TabIndex = 2;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(31, 57);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(47, 15);
+            this.label4.TabIndex = 10;
+            this.label4.Text = "Matéria";
+            // 
             // TelaCadastroQuestaoForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(602, 606);
+            this.Controls.Add(this.cBoxMateria);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnGravar);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.textBoxDescricao);
-            this.Controls.Add(this.cBoxMateria);
+            this.Controls.Add(this.cBoxDiciplina);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
@@ -253,7 +281,7 @@
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ComboBox cBoxMateria;
+        private System.Windows.Forms.ComboBox cBoxDiciplina;
         private System.Windows.Forms.TextBox textBoxDescricao;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.RadioButton rBtnFalso;
@@ -266,5 +294,7 @@
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.Button btnGravar;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.ComboBox cBoxMateria;
+        private System.Windows.Forms.Label label4;
     }
 }

@@ -144,20 +144,22 @@ namespace GeradorProvas.ModuloTeste
 
         private List<Questao> ObterQuestoesRandomicas(List<Questao> questoesFiltradas, int quantidadeQuestoes)
         {
+            if (quantidadeQuestoes > questoesFiltradas.Count)
+                quantidadeQuestoes = questoesFiltradas.Count;
+
             List<Questao> questaoRandomicas = new List<Questao>();
 
             Random numero = new Random();
 
-            if(quantidadeQuestoes <= questoesFiltradas.Count)
+            
+            while (questaoRandomicas.Count != quantidadeQuestoes)
             {
-                while (questaoRandomicas.Count != quantidadeQuestoes)
-                {
-                    int ranNum = numero.Next(0, (quantidadeQuestoes - 1));
+                int ranNum = numero.Next(0, quantidadeQuestoes);
 
-                    if (questaoRandomicas.Exists(x => x != questoesFiltradas[ranNum]))
-                        questaoRandomicas.Add(questoesFiltradas[ranNum]);
-                }
+                if (!questaoRandomicas.Exists(x => x.Numero == questoesFiltradas[ranNum].Numero))
+                    questaoRandomicas.Add(questoesFiltradas[ranNum]);
             }
+            
 
             return questaoRandomicas;
         }

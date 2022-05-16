@@ -21,10 +21,12 @@ namespace GeradorProvas.ModuloTeste
 
         public override string TooltipGerarPdf => "Gerar PDF";
 
-        public override bool FiltrarHabilitado => true;
+        public override string TooltipDuplicar => "Duplicar teste";
 
         public override bool EditarHabilitado => false;
 
         public override bool PdfHabilitado => true;
+
+        public override bool DuplicarTeste => true;
     }
 }

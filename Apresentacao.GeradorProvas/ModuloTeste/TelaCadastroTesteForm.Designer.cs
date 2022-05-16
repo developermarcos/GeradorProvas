@@ -73,6 +73,7 @@
             // 
             // cBoxDiciplina
             // 
+            this.cBoxDiciplina.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cBoxDiciplina.FormattingEnabled = true;
             this.cBoxDiciplina.Location = new System.Drawing.Point(108, 52);
             this.cBoxDiciplina.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
@@ -82,6 +83,7 @@
             // 
             // cBoxSerie
             // 
+            this.cBoxSerie.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cBoxSerie.FormattingEnabled = true;
             this.cBoxSerie.Location = new System.Drawing.Point(108, 90);
             this.cBoxSerie.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);

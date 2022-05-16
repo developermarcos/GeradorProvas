@@ -27,7 +27,7 @@ namespace Dominio.GeradorProvas.ModuloMateria
 
         public override string ToString()
         {
-            return $"Nº: {Numero} | Diclipina {Disciplina} | Matéria: {Descricao}";
+            return $"{Numero}- {Descricao}";
         }
     }
 }

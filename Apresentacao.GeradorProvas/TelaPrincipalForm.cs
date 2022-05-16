@@ -93,6 +93,7 @@ namespace Apresentacao.GeradorProvas
             btnExcluir.Enabled = configuracao.ExcluirHabilitado;
             btnFiltrar.Enabled = configuracao.FiltrarHabilitado;
             btnGerarPdf.Enabled = configuracao.PdfHabilitado;
+            btnDuplicar.Enabled = configuracao.DuplicarTeste;
         }
 
         private void ConfigurarTooltips(ConfiguracaoToolboxBase configuracao)
@@ -102,6 +103,7 @@ namespace Apresentacao.GeradorProvas
             btnExcluir.ToolTipText = configuracao.TooltipExcluir;
             btnFiltrar.ToolTipText = configuracao.TooltipFiltrar;
             btnGerarPdf.ToolTipText = configuracao.TooltipGerarPdf;
+            btnDuplicar.ToolTipText = configuracao.TooltipDuplicar;
         }
 
         private void ConfigurarListagem()

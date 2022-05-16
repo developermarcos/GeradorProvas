@@ -1,4 +1,5 @@
 ﻿using Apresentacao.GeradorProvas;
+using Dominio.GeradorProvas;
 using Dominio.GeradorProvas.ModuloMateria;
 using Dominio.GeradorProvas.ModuloQuestao;
 using FluentValidation.Results;
@@ -31,9 +32,10 @@ namespace GeradorProvas.ModuloQuestao
 
         private void PreencherTela()
         {
-            cBoxMateria.Items.Clear();
-            foreach (var item in Materias)
-                cBoxMateria.Items.Add(item);
+            cBoxDiciplina.Items.Clear();
+            foreach (int i in Enum.GetValues(typeof(DiciplinaEnum)))
+                cBoxDiciplina.Items.Add((DiciplinaEnum)i);
+
         }
 
         public Questao Questao 
@@ -42,6 +44,7 @@ namespace GeradorProvas.ModuloQuestao
             set 
             { 
                 questao = value;
+                cBoxDiciplina.SelectedItem = questao.Materia.Disciplina;
                 cBoxMateria.SelectedItem = questao.Materia;
                 textBoxDescricao.Text = questao.Pergunta;
                 ListarAlternativas();
@@ -64,13 +67,16 @@ namespace GeradorProvas.ModuloQuestao
                 MessageBox.Show("Informe a descrição da alternativa primeiro", "Adicionar alternativa", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
+
             alternativa.Descricao = textBoxAlternativa.Text;
 
             if (rBtnVerdade.Checked == true)
                 alternativa.EstaCorreta = true;
 
             questao.Alternativas.Add(alternativa);
+
             ListarAlternativas();
+
             textBoxAlternativa.Text = null;
         }
 
@@ -86,6 +92,7 @@ namespace GeradorProvas.ModuloQuestao
         private void btnGravar_Click(object sender, EventArgs e)
         {
             questao.Materia = (Materia)cBoxMateria.SelectedItem;
+
             questao.Pergunta = textBoxDescricao.Text;
 
             var resultadoValidacao = GravarRegistro(Questao);
@@ -102,5 +109,33 @@ namespace GeradorProvas.ModuloQuestao
 
         public Func<Questao, ValidationResult> GravarRegistro { get; set; }
 
+        private void cBoxDiciplina_Leave(object sender, EventArgs e)
+        {
+            AlternarCBoxMaterias();
+        }
+
+        private void cBoxDiciplina_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            AlternarCBoxMaterias();
+        }
+        
+        private void AlternarCBoxMaterias()
+        {
+            if (cBoxDiciplina.SelectedItem != null)
+            {
+                cBoxMateria.SelectedItem =  null;
+
+                cBoxMateria.Items.Clear();
+
+                DiciplinaEnum Disciplina = (DiciplinaEnum)cBoxDiciplina.SelectedItem;
+
+                List<Materia> materiaFiltrada = Materias.FindAll(x => x.Disciplina == Disciplina);
+
+                foreach (var item in materiaFiltrada)
+                {
+                    cBoxMateria.Items.Add(item);
+                }
+            }
+        }
     }
 }

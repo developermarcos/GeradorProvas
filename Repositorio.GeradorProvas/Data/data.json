@@ -16,77 +16,122 @@
         "Serie": 1,
         "Descricao": "Adjetivos",
         "Numero": 2
+      },
+      {
+        "$id": "5",
+        "Disciplina": 1,
+        "Serie": 1,
+        "Descricao": "Subtração",
+        "Numero": 3
       }
     ]
   },
   "Questoes": {
-    "$id": "5",
+    "$id": "6",
     "$values": [
       {
-        "$id": "6",
+        "$id": "7",
         "Materia": {
-          "$ref": "4"
+          "$ref": "3"
         },
         "Pergunta": "A soma de 1 + 1",
         "Alternativas": {
-          "$id": "7",
+          "$id": "8",
           "$values": [
             {
-              "$id": "8",
+              "$id": "9",
               "Descricao": "4",
               "EstaCorreta": false
             },
             {
-              "$id": "9",
+              "$id": "10",
               "Descricao": "2",
               "EstaCorreta": true
             },
             {
-              "$id": "10",
+              "$id": "11",
               "Descricao": "3",
               "EstaCorreta": false
             },
             {
-              "$id": "11",
+              "$id": "12",
               "Descricao": "1",
               "EstaCorreta": false
             }
           ]
         },
         "Numero": 1
+      },
+      {
+        "$id": "13",
+        "Materia": {
+          "$ref": "5"
+        },
+        "Pergunta": "A subtração de 4 - 2 é:",
+        "Alternativas": {
+          "$id": "14",
+          "$values": [
+            {
+              "$id": "15",
+              "Descricao": "1",
+              "EstaCorreta": false
+            },
+            {
+              "$id": "16",
+              "Descricao": "3",
+              "EstaCorreta": false
+            },
+            {
+              "$id": "17",
+              "Descricao": "7",
+              "EstaCorreta": false
+            },
+            {
+              "$id": "18",
+              "Descricao": "2",
+              "EstaCorreta": true
+            },
+            {
+              "$id": "19",
+              "Descricao": "5",
+              "EstaCorreta": false
+            }
+          ]
+        },
+        "Numero": 2
       }
     ]
   },
   "Testes": {
-    "$id": "12",
+    "$id": "20",
     "$values": [
       {
-        "$id": "13",
+        "$id": "21",
         "Titulo": "teste",
         "Disciplina": 2,
         "Serie": 1,
         "quantidadeQuestoes": 2,
         "Questoes": {
-          "$id": "14",
+          "$id": "22",
           "$values": [
             {
-              "$ref": "6"
+              "$ref": "7"
             }
           ]
         },
         "Numero": 1
       },
       {
-        "$id": "15",
+        "$id": "23",
         "Titulo": "teste 2",
         "Disciplina": 2,
         "Serie": 1,
         "quantidadeQuestoes": 4,
         "Questoes": {
-          "$id": "16",
+          "$id": "24",
           "$values": [
             {
-              "$ref": "6"
+              "$ref": "7"
             }
           ]
         },

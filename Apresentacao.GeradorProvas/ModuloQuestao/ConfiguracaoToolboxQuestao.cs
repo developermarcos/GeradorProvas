@@ -9,7 +9,7 @@ namespace GeradorProvas.ModuloQuestao
 {
     internal class ConfiguracaoToolboxQuestao : ConfiguracaoToolboxBase
     {
-        public override string TipoCadastro => "Listagem de Questões";
+        public override string TipoCadastro => "Listagem Questões";
 
         public override string TooltipInserir => "Cadastrar questão";
 
@@ -21,6 +21,6 @@ namespace GeradorProvas.ModuloQuestao
 
         public override string TooltipGerarPdf => "Gerar PDF";
 
-        public override bool FiltrarHabilitado { get { return true; } }
+        public override string TooltipDuplicar => "Duplicar questão";
     }
 }
