@@ -19,9 +19,9 @@ namespace Infra.GeradorProvas.ModuloQuestao
             return dataContext.Questoes;
         }
 
-        public override AbstractValidator<Questao> ObterValidador()
+        public override AbstractValidator<Questao> ObterValidador(Questao registro = null)
         {
-            return new ValidadorQuestao();
+            return new ValidadorQuestao(registro, ObterRegistros());
         }
     }
 }

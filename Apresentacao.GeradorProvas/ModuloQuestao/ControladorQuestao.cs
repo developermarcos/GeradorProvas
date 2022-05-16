@@ -83,11 +83,8 @@ namespace GeradorProvas.ModuloQuestao
                 MessageBox.Show("Deve ser cadastrado uma matéria primeiro", "Inserir questão", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
                 return;
             }
-            Questao questao = new Questao();
-
+            
             TelaCadastroQuestaoForm telaCadastro = new TelaCadastroQuestaoForm("Inserir Questão", Materias);
-
-            telaCadastro.Questao = questao;
 
             telaCadastro.GravarRegistro = repositorioQuestao.Inserir;
 

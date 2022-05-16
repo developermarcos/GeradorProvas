@@ -26,6 +26,8 @@ namespace GeradorProvas.ModuloQuestao
             Text = nomeTela;
 
             this.Materias = materias;
+            
+            questao = new Questao();
 
             PreencherTela();
         }
@@ -94,6 +96,20 @@ namespace GeradorProvas.ModuloQuestao
             questao.Materia = (Materia)cBoxMateria.SelectedItem;
 
             questao.Pergunta = textBoxDescricao.Text;
+
+            int quantidadeAlternativasVerdadeiras = 0;
+            foreach(var item in questao.Alternativas)
+            {
+                if (item.EstaCorreta)
+                    quantidadeAlternativasVerdadeiras++;
+            }
+
+            if(quantidadeAlternativasVerdadeiras != 1)
+            {
+                TelaPrincipalForm.Instancia.AtualizarRodape("A alternativa deve conter apenas uma alternativa verdadeira");
+                DialogResult = DialogResult.None;
+                return;
+            }
 
             var resultadoValidacao = GravarRegistro(Questao);
 

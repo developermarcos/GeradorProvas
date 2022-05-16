@@ -1,5 +1,7 @@
-﻿using Dominio.GeradorProvas.ModuloMateria;
+﻿using Dominio.GeradorProvas.Compartilhado;
+using Dominio.GeradorProvas.ModuloMateria;
 using FluentValidation;
+using FluentValidation.Results;
 using Infra.GeradorProvas.Compartilhado;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,9 +21,9 @@ namespace Infra.GeradorProvas.ModuloMateria
             return dataContext.Materias;
         }
 
-        public override AbstractValidator<Materia> ObterValidador()
+        public override AbstractValidator<Materia> ObterValidador(Materia registro)
         {
-            return new ValidadorMateria();
+            return new ValidadorMateria(registro, ObterRegistros());
         }
     }
 }

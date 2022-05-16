@@ -19,11 +19,11 @@ namespace Infra.GeradorProvas.Compartilhado
 
         public abstract List<T> ObterRegistros();
 
-        public abstract AbstractValidator<T> ObterValidador();
+        public abstract AbstractValidator<T> ObterValidador(T registro = null);
 
         public virtual ValidationResult Inserir(T novoRegistro)
         {
-            var validator = ObterValidador();
+            var validator = ObterValidador(novoRegistro);
 
             var resultadoValidacao = validator.Validate(novoRegistro);
 
@@ -41,7 +41,7 @@ namespace Infra.GeradorProvas.Compartilhado
 
         public virtual ValidationResult Editar(T registro)
         {
-            var validator = ObterValidador();
+            var validator = ObterValidador(registro);
 
             var resultadoValidacao = validator.Validate(registro);
 
