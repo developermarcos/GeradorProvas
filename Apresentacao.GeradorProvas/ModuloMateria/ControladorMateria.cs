@@ -73,8 +73,11 @@ namespace GeradorProvas.ModuloMateria
         public override void Inserir()
         {
             TelaCadastroMateriaForm telaCadastro = new TelaCadastroMateriaForm("Cadastrar Matéria");
+
             telaCadastro.Materia = new Materia();
+
             telaCadastro.GravarRegistro = repositorioMateria.Inserir;
+
             DialogResult resultado = telaCadastro.ShowDialog();
 
             if (resultado == DialogResult.OK)

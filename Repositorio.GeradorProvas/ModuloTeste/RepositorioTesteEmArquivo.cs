@@ -21,7 +21,7 @@ namespace Infra.GeradorProvas.ModuloTeste
             return dataContext.Testes;
         }
 
-        public override AbstractValidator<Teste> ObterValidador(Teste teste)
+        public override AbstractValidator<Teste> ObterValidador()
         {
             return new ValidadorTeste();
         }

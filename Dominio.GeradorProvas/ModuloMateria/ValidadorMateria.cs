@@ -7,7 +7,7 @@ namespace Dominio.GeradorProvas.ModuloMateria
 {
     public class ValidadorMateria : AbstractValidator<Materia>
     {
-        public ValidadorMateria(Materia materia, List<Materia> materias)
+        public ValidadorMateria()
         {
             RuleFor(x => x.Disciplina)
                 .NotEmpty().NotNull();
@@ -17,13 +17,6 @@ namespace Dominio.GeradorProvas.ModuloMateria
 
             RuleFor(x => x.Descricao)
                 .NotEmpty().NotNull();
-            
-            foreach(var item in materias)
-            {
-                if(materia.Numero != item.Numero)
-                    RuleFor(x => x.Descricao).NotEqual(item.Descricao).WithMessage("Descrição não pode ser repetida no sistema");
-            }
-            
         }
     }
 }

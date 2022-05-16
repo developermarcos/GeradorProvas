@@ -40,11 +40,14 @@ namespace GeradorProvas.ModuloMateria
         public Func<Materia, ValidationResult> GravarRegistro { get; set; }
         private void btnGravar_Click(object sender, EventArgs e)
         {
-            materia.Disciplina = (DiciplinaEnum)cBoxDiciplina.SelectedItem;
-            materia.Serie = (SerieEnum)cBoxSerie.SelectedItem;
-            materia.Descricao = txtboxMateria.Text;
+            Materia materiaEditada = new Materia();
 
-            var resultadoValidacao = GravarRegistro(Materia);
+            materiaEditada.Numero = materia.Numero;
+            materiaEditada.Disciplina = (DiciplinaEnum)cBoxDiciplina.SelectedItem;
+            materiaEditada.Serie = (SerieEnum)cBoxSerie.SelectedItem;
+            materiaEditada.Descricao = txtboxMateria.Text;
+            
+            var resultadoValidacao = GravarRegistro(materiaEditada);
 
             if (resultadoValidacao.IsValid == false)
             {

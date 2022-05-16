@@ -9,7 +9,7 @@ namespace Dominio.GeradorProvas.ModuloQuestao
 {
     public class ValidadorQuestao : AbstractValidator<Questao>
     {
-        public ValidadorQuestao(Questao questao, List<Questao> questoes)
+        public ValidadorQuestao()
         {
             RuleFor(x => x.Pergunta)
                 .NotEmpty()
