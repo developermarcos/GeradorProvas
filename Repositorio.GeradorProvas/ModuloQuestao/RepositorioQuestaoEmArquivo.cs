@@ -31,17 +31,11 @@ namespace Infra.GeradorProvas.ModuloQuestao
             bool perguntaJaCadastrada = dataContext.Questoes.Exists(x => x.Pergunta.ToUpper() == novoRegistro.Pergunta.ToUpper());
 
             if (perguntaJaCadastrada)
-            {
-                ValidationFailure perguntaRepetida = new ValidationFailure("", "Questão não cadastrada, pergunta ja foi utilizada em outra questão");
-
-                ValidationResult validador = new ValidationResult();
-
-                validador.Errors.Add(perguntaRepetida);
-
-                return validador;
-            }
+                return ValidaPerguntaCadastrada("Questão não cadastrada, pergunta ja foi utilizada em outra questão");
+            
 
             ValidationResult validaAlternativas = ValidarAlternativas(novoRegistro);
+
             if (!validaAlternativas.IsValid)
             {
                 return validaAlternativas;
@@ -57,17 +51,11 @@ namespace Infra.GeradorProvas.ModuloQuestao
                         && x.Numero != registro.Numero);
 
             if (perguntaJaCadastrada)
-            {
-                ValidationFailure perguntaRepetida = new ValidationFailure("", "Questão não editada, pergunta ja foi utilizada em outra questão");
-
-                ValidationResult validador = new ValidationResult();
-
-                validador.Errors.Add(perguntaRepetida);
-
-                return validador;
-            }
+                return ValidaPerguntaCadastrada("Questão não editada, pergunta ja foi utilizada em outra questão");
+            
 
             ValidationResult validaAlternativas = ValidarAlternativas(registro);
+
             if (!validaAlternativas.IsValid)
             {
                 return validaAlternativas;
@@ -128,6 +116,17 @@ namespace Infra.GeradorProvas.ModuloQuestao
 
 
             return questaoRandomicas;
+        }
+
+        private ValidationResult ValidaPerguntaCadastrada(string menssage)
+        {
+            ValidationFailure perguntaRepetida = new ValidationFailure("", menssage);
+
+            ValidationResult validador = new ValidationResult();
+
+            validador.Errors.Add(perguntaRepetida);
+
+            return validador;
         }
     }
 }
