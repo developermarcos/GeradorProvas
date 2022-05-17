@@ -42,6 +42,17 @@ namespace Infra.GeradorProvas.ModuloTeste
                 return validador;
             }
 
+            if (novoRegistro.Questoes.Count < 1)
+            {
+                ValidationFailure perguntaRepetida = new ValidationFailure("", "Nenhuma questão encontrada.");
+
+                ValidationResult validador = new ValidationResult();
+
+                validador.Errors.Add(perguntaRepetida);
+
+                return validador;
+            }
+
             return base.Inserir(novoRegistro);
         }
 

@@ -14,6 +14,10 @@ namespace Dominio.GeradorProvas.ModuloTeste
             RuleFor(x => x.Serie)
                 .NotEmpty().NotNull();
 
+            RuleFor(x => x.Questoes.Count)
+                .GreaterThan(0)
+                .WithMessage("Quantidade de questões não pode ser menor que zero");
+
         }
     }
 }
