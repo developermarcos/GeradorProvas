@@ -93,6 +93,17 @@ namespace Infra.GeradorProvas.ModuloQuestao
 
                 validador.Errors.Add(perguntaRepetida);
             }
+
+            List<string> listaTitulo = new List<string>();
+            foreach (var item in questao.Alternativas)
+                listaTitulo.Add(item.Descricao.ToUpper());
+            
+            if(listaTitulo.Count != listaTitulo.Distinct().ToList().Count)
+            {
+                ValidationFailure perguntaRepetida = new ValidationFailure("", "Alternativas duplicadas.");
+
+                validador.Errors.Add(perguntaRepetida);
+            }
                 
             return validador;
         }

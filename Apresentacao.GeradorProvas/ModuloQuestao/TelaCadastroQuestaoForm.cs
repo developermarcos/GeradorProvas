@@ -19,6 +19,7 @@ namespace GeradorProvas.ModuloQuestao
     {
         public List<Materia> Materias;
         private Questao questao;
+        private List<Alternativa> Alternativas { get; set; }
         public TelaCadastroQuestaoForm(string nomeTela, List<Materia> materias)
         {
             InitializeComponent();
@@ -28,6 +29,8 @@ namespace GeradorProvas.ModuloQuestao
             this.Materias = materias;
             
             questao = new Questao();
+
+            Alternativas = new List<Alternativa>();
 
             PreencherTela();
         }
@@ -50,6 +53,10 @@ namespace GeradorProvas.ModuloQuestao
                 PopularMateriaPorDisciplinaSelecionada();
                 cBoxMateria.SelectedItem = questao.Materia;
                 textBoxDescricao.Text = questao.Pergunta;
+
+                foreach(var item in questao.Alternativas)
+                    Alternativas.Add(item);
+
                 ListarAlternativas();
                 
             } 
@@ -58,8 +65,8 @@ namespace GeradorProvas.ModuloQuestao
         {
             listaAlternativas.Items.Clear();
 
-            if(questao.Alternativas != null && questao.Alternativas.Count > 0)
-                foreach (var item in questao.Alternativas)
+            if(Alternativas != null && Alternativas.Count > 0)
+                foreach (var item in Alternativas)
                     listaAlternativas.Items.Add(item);
         }
 
@@ -77,7 +84,7 @@ namespace GeradorProvas.ModuloQuestao
             if (rBtnVerdade.Checked == true)
                 alternativa.EstaCorreta = true;
 
-            questao.Alternativas.Add(alternativa);
+            Alternativas.Add(alternativa);
 
             ListarAlternativas();
 
@@ -86,9 +93,9 @@ namespace GeradorProvas.ModuloQuestao
 
         private void btnExcluir_Click(object sender, EventArgs e)
         {
-            Alternativa alternativa = (Alternativa)listaAlternativas.SelectedItem;
+            Alternativa alternativaSelecionada = (Alternativa)listaAlternativas.SelectedItem;
 
-            questao.Alternativas.Remove(alternativa);
+            Alternativas.Remove(alternativaSelecionada);
 
             ListarAlternativas();
         }
@@ -101,7 +108,7 @@ namespace GeradorProvas.ModuloQuestao
             novaQuestao.Pergunta = textBoxDescricao.Text;
             Materia materia = (Materia)cBoxMateria.SelectedItem;
             novaQuestao.Materia = materia;
-                novaQuestao.Alternativas = questao.Alternativas;
+            novaQuestao.Alternativas = Alternativas;
 
             var resultadoValidacao = GravarRegistro(novaQuestao);
 

@@ -86,12 +86,12 @@
             },
             {
               "$id": "18",
-              "Descricao": "5",
+              "Descricao": "6",
               "EstaCorreta": false
             },
             {
               "$id": "19",
-              "Descricao": "6",
+              "Descricao": "4",
               "EstaCorreta": false
             }
           ]
