@@ -11,10 +11,10 @@ namespace Infra.GeradorProvas.Compartilhado.Serializador
 {
     public class SerializadorDadosEmJsonDotnet : ISerializador
     {
-        private string arquivo;
-        public SerializadorDadosEmJsonDotnet(string caminho)
+        private readonly string arquivo;
+        public SerializadorDadosEmJsonDotnet()
         {
-            this.arquivo = caminho;
+            this.arquivo = "data.json";
         }
         public DataContext CarregarDadosDoArquivo()
         {
