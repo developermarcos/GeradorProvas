@@ -34,8 +34,8 @@ namespace Infra.GeradorProvas.ModuloMateria
 
         public override ValidationResult Editar(Materia registro)
         {
-            bool nomeJaCadastrado = dataContext.Materias.Any(x => 
-                x.Descricao.ToUpper() == registro.Descricao.ToUpper()
+            bool nomeJaCadastrado = dataContext.Materias
+                .Any(x => x.Descricao.ToUpper() == registro.Descricao.ToUpper()
                 && x.Numero != registro.Numero);
 
             if (nomeJaCadastrado)

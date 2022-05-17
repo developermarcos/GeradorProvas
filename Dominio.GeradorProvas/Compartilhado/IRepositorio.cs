@@ -15,5 +15,6 @@ namespace Dominio.GeradorProvas.Compartilhado
         List<T> SelecionarTodos();
 
         T SelecionarPorNumero(int numero);
+
     }
 }

@@ -47,9 +47,11 @@ namespace GeradorProvas.ModuloQuestao
             { 
                 questao = value;
                 cBoxDiciplina.SelectedItem = questao.Materia.Disciplina;
+                PopularMateriaPorDisciplinaSelecionada();
                 cBoxMateria.SelectedItem = questao.Materia;
                 textBoxDescricao.Text = questao.Pergunta;
                 ListarAlternativas();
+                
             } 
         }
         private void ListarAlternativas()
@@ -93,25 +95,15 @@ namespace GeradorProvas.ModuloQuestao
 
         private void btnGravar_Click(object sender, EventArgs e)
         {
-            questao.Materia = (Materia)cBoxMateria.SelectedItem;
+            Questao novaQuestao = new Questao();
 
-            questao.Pergunta = textBoxDescricao.Text;
+            novaQuestao.Numero = questao.Numero;
+            novaQuestao.Pergunta = textBoxDescricao.Text;
+            Materia materia = (Materia)cBoxMateria.SelectedItem;
+            novaQuestao.Materia = materia;
+                novaQuestao.Alternativas = questao.Alternativas;
 
-            int quantidadeAlternativasVerdadeiras = 0;
-            foreach(var item in questao.Alternativas)
-            {
-                if (item.EstaCorreta)
-                    quantidadeAlternativasVerdadeiras++;
-            }
-
-            if(quantidadeAlternativasVerdadeiras != 1)
-            {
-                TelaPrincipalForm.Instancia.AtualizarRodape("A alternativa deve conter apenas uma alternativa verdadeira");
-                DialogResult = DialogResult.None;
-                return;
-            }
-
-            var resultadoValidacao = GravarRegistro(Questao);
+            var resultadoValidacao = GravarRegistro(novaQuestao);
 
             if (resultadoValidacao.IsValid == false)
             {
@@ -125,17 +117,12 @@ namespace GeradorProvas.ModuloQuestao
 
         public Func<Questao, ValidationResult> GravarRegistro { get; set; }
 
-        private void cBoxDiciplina_Leave(object sender, EventArgs e)
-        {
-            AlternarCBoxMaterias();
-        }
-
         private void cBoxDiciplina_SelectedIndexChanged(object sender, EventArgs e)
         {
-            AlternarCBoxMaterias();
+            PopularMateriaPorDisciplinaSelecionada();
         }
-        
-        private void AlternarCBoxMaterias()
+
+        private void PopularMateriaPorDisciplinaSelecionada()
         {
             if (cBoxDiciplina.SelectedItem != null)
             {
@@ -146,6 +133,11 @@ namespace GeradorProvas.ModuloQuestao
                 DiciplinaEnum Disciplina = (DiciplinaEnum)cBoxDiciplina.SelectedItem;
 
                 List<Materia> materiaFiltrada = Materias.FindAll(x => x.Disciplina == Disciplina);
+
+                if (materiaFiltrada == null || materiaFiltrada.Count == 0)
+                {
+                    MessageBox.Show($"Nenhuma materia encontrada para a diciplina {Disciplina}", "Lista de matérias", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
 
                 foreach (var item in materiaFiltrada)
                 {

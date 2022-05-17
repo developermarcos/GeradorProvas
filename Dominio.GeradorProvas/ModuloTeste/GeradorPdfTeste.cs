@@ -8,10 +8,14 @@ namespace Dominio.GeradorProvas.ModuloTeste
 {
     public class GeradorPdfTeste
     {
-        public GeradorPdfTeste(string caminho, Teste teste)
+        public GeradorPdfTeste(string caminho, Teste teste, bool impressaoGabarito)
         {
             this.caminho=caminho;
+
+            this.ImpressaoGabarito=impressaoGabarito;
+
             Teste=teste;
+
             Letras.Add(1, "A");
             Letras.Add(2, "B");
             Letras.Add(3, "C");
@@ -23,6 +27,8 @@ namespace Dominio.GeradorProvas.ModuloTeste
             Letras.Add(9, "I");
             Letras.Add(10, "J");
         }
+
+        private bool ImpressaoGabarito { get; set; }
 
         public string caminho { get; set;}
 
@@ -66,7 +72,10 @@ namespace Dominio.GeradorProvas.ModuloTeste
             int posicaoQuestao = 1;
             foreach (var Alternativa in item.Alternativas)
             {
-                questao += "  "+Letras[posicaoQuestao]+") "+Alternativa.Descricao+"\n";
+                if(ImpressaoGabarito && Alternativa.EstaCorreta)
+                    questao += "  "+Letras[posicaoQuestao]+") "+Alternativa.Descricao+" - Correta"+"\n";
+                else
+                    questao += "  "+Letras[posicaoQuestao]+") "+Alternativa.Descricao+"\n";
                 posicaoQuestao++;
             }
             questao += "\n";
@@ -79,7 +88,7 @@ namespace Dominio.GeradorProvas.ModuloTeste
         private void CriaCabecalhoImpressao(Document doc)
         {
             Paragraph titulo = new Paragraph();
-            titulo.Font = new Font(Font.FontFamily.COURIER, 32);
+            titulo.Font = new Font(Font.FontFamily.TIMES_ROMAN, 32);
             titulo.Alignment = Element.ALIGN_CENTER;
             titulo.Add(Teste.Titulo+"\n\n");
             doc.Add(titulo);
@@ -88,8 +97,10 @@ namespace Dominio.GeradorProvas.ModuloTeste
         private void CriaIdentificacaoImpressao(Document doc)
         {
             Paragraph Identificacao = new Paragraph();
-            Identificacao.Font = new Font(Font.FontFamily.COURIER, 18);
+            Identificacao.Font = new Font(Font.FontFamily.TIMES_ROMAN, 18);
             Identificacao.Alignment = Element.ALIGN_LEFT;
+            if (ImpressaoGabarito)
+                Identificacao.Add("GABARITO\n");
             Identificacao.Add("Aluno: \n");
             Identificacao.Add("Série: "+Teste.Serie+"\n\n\n");
             doc.Add(Identificacao);

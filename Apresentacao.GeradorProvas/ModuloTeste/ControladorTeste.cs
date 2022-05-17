@@ -1,4 +1,5 @@
 ﻿using Apresentacao.GeradorProvas;
+using Apresentacao.GeradorProvas.ModuloTeste;
 using Dominio.GeradorProvas.ModuloMateria;
 using Dominio.GeradorProvas.ModuloQuestao;
 using Dominio.GeradorProvas.ModuloTeste;
@@ -14,14 +15,12 @@ namespace GeradorProvas.ModuloTeste
     {
         private IRepositorioTeste repositorioTeste;
         private IRepositorioQuestao repositorioQuestao;
-        private IRepositorioMateria repositorioMateria;
         private TabelaTesteControl tabelaTeste;
 
-        public ControladorTeste(IRepositorioTeste repositorioTeste, IRepositorioQuestao repositorioQuestao, IRepositorioMateria repositorioMateria)
+        public ControladorTeste(IRepositorioTeste repositorioTeste, IRepositorioQuestao repositorioQuestao)
         {
             this.repositorioTeste=repositorioTeste;
             this.repositorioQuestao=repositorioQuestao;
-            this.repositorioMateria=repositorioMateria;
         }
 
         public override void Editar()
@@ -78,7 +77,16 @@ namespace GeradorProvas.ModuloTeste
                 novoTeste.Disciplina = testeSelecionado.Disciplina;
                 novoTeste.Questoes = testeSelecionado.Questoes;
 
-                repositorioTeste.Inserir(novoTeste);
+                var resultadoValidacao = repositorioTeste.Inserir(novoTeste);
+
+                if (resultadoValidacao.IsValid == false)
+                {
+                    string erro = resultadoValidacao.Errors[0].ErrorMessage;
+
+                    TelaPrincipalForm.Instancia.AtualizarRodape(erro);
+
+                    Duplicar();
+                }
 
                 CarregarTestes();
             }
@@ -97,15 +105,21 @@ namespace GeradorProvas.ModuloTeste
                 "Gerar PDF de teste", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
-            using(SaveFileDialog saveFileDialog = new SaveFileDialog() { Filter = "PDF file|*.pdf", ValidateNames = true })
-            {
-                if (saveFileDialog.ShowDialog() == DialogResult.OK)
-                {
-                    string pastaSelecioanda = saveFileDialog.FileName;
-                    
-                    GeradorPdfTeste geradorPdf = new GeradorPdfTeste(pastaSelecioanda, teste);
 
-                    geradorPdf.GerarPdf();
+            TelaTipoImpressaoForm telaTipoImpressao = new TelaTipoImpressaoForm();
+
+            if(telaTipoImpressao.ShowDialog() == DialogResult.OK)
+            {
+                using (SaveFileDialog saveFileDialog = new SaveFileDialog() { Filter = "PDF file|*.pdf", ValidateNames = true })
+                {
+                    if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                    {
+                        string pastaSelecioanda = saveFileDialog.FileName;
+
+                        GeradorPdfTeste geradorPdf = new GeradorPdfTeste(pastaSelecioanda, teste, telaTipoImpressao.ImpressaoGabarito());
+
+                        geradorPdf.GerarPdf();
+                    }
                 }
             }
         }
@@ -131,7 +145,7 @@ namespace GeradorProvas.ModuloTeste
                     return;
                 }
 
-                telaCadastro.Teste.Questoes = ObterQuestoesRandomicas(questoesFiltradas, telaCadastro.Teste.quantidadeQuestoes);
+                telaCadastro.Teste.Questoes = repositorioQuestao.ObterQuestoesRandomicas(questoesFiltradas, telaCadastro.Teste.quantidadeQuestoes);
 
                 var resultadoValidacao = repositorioTeste.Inserir(telaCadastro.Teste);
 
@@ -140,33 +154,13 @@ namespace GeradorProvas.ModuloTeste
                     string erro = resultadoValidacao.Errors[0].ErrorMessage;
 
                     TelaPrincipalForm.Instancia.AtualizarRodape(erro);
+
+                    Inserir();
                 }
                 CarregarTestes();
             }
 
 
-        }
-
-        private List<Questao> ObterQuestoesRandomicas(List<Questao> questoesFiltradas, int quantidadeQuestoes)
-        {
-            if (quantidadeQuestoes > questoesFiltradas.Count)
-                quantidadeQuestoes = questoesFiltradas.Count;
-
-            List<Questao> questaoRandomicas = new List<Questao>();
-
-            Random numero = new Random();
-
-            
-            while (questaoRandomicas.Count != quantidadeQuestoes)
-            {
-                int ranNum = numero.Next(0, quantidadeQuestoes);
-
-                if (!questaoRandomicas.Exists(x => x.Numero == questoesFiltradas[ranNum].Numero))
-                    questaoRandomicas.Add(questoesFiltradas[ranNum]);
-            }
-            
-
-            return questaoRandomicas;
         }
 
         public override ConfiguracaoToolboxBase ObterConfiguracaoToolbox()

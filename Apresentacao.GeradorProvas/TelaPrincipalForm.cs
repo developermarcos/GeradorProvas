@@ -128,7 +128,7 @@ namespace Apresentacao.GeradorProvas
             controladores = new Dictionary<string, ControladorBase>();
             controladores.Add("Materias", new ControladorMateria(repositorioMateria));
             controladores.Add("Questões", new ControladorQuestao(repositorioQuestao, repositorioMateria));
-            controladores.Add("Testes", new ControladorTeste(repositorioTeste, repositorioQuestao, repositorioMateria));
+            controladores.Add("Testes", new ControladorTeste(repositorioTeste, repositorioQuestao));
         }
 
         private void btnInserir_Click(object sender, EventArgs e)

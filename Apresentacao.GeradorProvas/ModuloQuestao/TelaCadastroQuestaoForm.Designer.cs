@@ -79,7 +79,6 @@
             this.cBoxDiciplina.Size = new System.Drawing.Size(240, 23);
             this.cBoxDiciplina.TabIndex = 1;
             this.cBoxDiciplina.SelectedIndexChanged += new System.EventHandler(this.cBoxDiciplina_SelectedIndexChanged);
-            this.cBoxDiciplina.Leave += new System.EventHandler(this.cBoxDiciplina_Leave);
             // 
             // textBoxDescricao
             // 

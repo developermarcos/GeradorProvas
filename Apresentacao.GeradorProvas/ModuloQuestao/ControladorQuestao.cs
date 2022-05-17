@@ -27,6 +27,7 @@ namespace GeradorProvas.ModuloQuestao
         public override void Editar()
         {
             Questao questao = ObtemQuestaoSelecionada();
+
             if(questao == null)
             {
                 MessageBox.Show("Selecione uma questão primeiro?", "Editar questão", MessageBoxButtons.OK, MessageBoxIcon.Information);
