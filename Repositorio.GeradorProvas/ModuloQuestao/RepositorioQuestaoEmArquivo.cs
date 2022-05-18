@@ -37,9 +37,8 @@ namespace Infra.GeradorProvas.ModuloQuestao
             ValidationResult validaAlternativas = ValidarAlternativas(novoRegistro);
 
             if (!validaAlternativas.IsValid)
-            {
                 return validaAlternativas;
-            }
+            
             
             return base.Inserir(novoRegistro);
         }
