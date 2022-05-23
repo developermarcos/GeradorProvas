@@ -9,6 +9,7 @@ using Infra.GeradorProvas.ModuloMateria;
 using Infra.GeradorProvas.ModuloQuestao;
 using Infra.GeradorProvas.ModuloTeste;
 using GeradorProvas.ModuloTeste;
+using Infra.GeradorProvas.Db.ModuloMateira;
 
 namespace Apresentacao.GeradorProvas
 {
@@ -121,7 +122,8 @@ namespace Apresentacao.GeradorProvas
 
         private void InicializarControladores()
         {
-            var repositorioMateria = new RepositorioMateriaEmArquivo(contextoDados);
+            //var repositorioMateria = new RepositorioMateriaEmArquivo(contextoDados);
+            var repositorioMateria = new RepositorioMateria();
             var repositorioQuestao = new RepositorioQuestaoEmArquivo(contextoDados);
             var repositorioTeste = new RepositorioTesteEmArquivo(contextoDados);
 

@@ -11,11 +11,11 @@ namespace Dominio.GeradorProvas.ModuloMateria
         public string Descricao { get; set; }
 
         public Materia() { }
-        public Materia(DiciplinaEnum Disciplina, SerieEnum serie, string nome)
+        public Materia(DiciplinaEnum Disciplina, SerieEnum serie, string descricao)
         {
             this.Disciplina=Disciplina;
             this.Serie=serie;
-            this.Descricao=nome;
+            this.Descricao=descricao;
         }
 
         public override void Atualizar(Materia registro)
