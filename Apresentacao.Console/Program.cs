@@ -15,7 +15,7 @@ namespace Apresentacao.Console
             //Materia novaMateria = new Materia(DiciplinaEnum.Matemática, SerieEnum.Primeira, "Subtração");
             IRepositorioMateria repositorioMateria = new RepositorioMateria();
             var teste = repositorioMateria.SelecionarTodos();
-            var registroPorId = repositorioMateria.SelecionarPorNumero(2);
+            //var registroPorId = repositorioMateria.SelecionarPorNumero(2);
             //repositorioMateria.Inserir(novaMateria);
 
             //novaMateria.Descricao = "Subtração alterada";

@@ -123,7 +123,7 @@ namespace Apresentacao.GeradorProvas
         private void InicializarControladores()
         {
             //var repositorioMateria = new RepositorioMateriaEmArquivo(contextoDados);
-            var repositorioMateria = new RepositorioMateria();
+            var repositorioMateria = new RepositorioMateriaSemAbstracao();
             var repositorioQuestao = new RepositorioQuestaoEmArquivo(contextoDados);
             var repositorioTeste = new RepositorioTesteEmArquivo(contextoDados);
 
