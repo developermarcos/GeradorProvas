@@ -1,6 +1,6 @@
 ﻿namespace Dominio.GeradorProvas
 {
-    public enum DiciplinaEnum
+    public enum DisciplinaEnum
     {
         Matemática = 1,
         Português = 2,

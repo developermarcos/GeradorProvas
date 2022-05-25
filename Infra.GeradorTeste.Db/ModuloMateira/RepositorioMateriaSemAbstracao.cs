@@ -19,7 +19,6 @@ namespace Infra.GeradorProvas.Db.ModuloMateira
               "Integrated Security=True;" +
               "Pooling=False";
 
-
         private readonly string sqlInsert =
             @"INSERT INTO [TbMateria] 
                         (
@@ -222,7 +221,7 @@ namespace Infra.GeradorProvas.Db.ModuloMateira
         {
             int numero = Convert.ToInt32(leitorContato["NUMERO"]);
             string descricao = Convert.ToString(leitorContato["DESCRICAO"]);
-            DiciplinaEnum disciplina = (DiciplinaEnum)Convert.ToInt32(leitorContato["DISCIPLINA"]);
+            DisciplinaEnum disciplina = (DisciplinaEnum)Convert.ToInt32(leitorContato["DISCIPLINA"]);
             SerieEnum serie = (SerieEnum)Convert.ToInt32(leitorContato["SERIE"]);
 
             var Materia = new Materia

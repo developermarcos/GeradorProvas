@@ -6,12 +6,12 @@ namespace Dominio.GeradorProvas.ModuloMateria
     [Serializable]
     public class Materia : EntidadeBase<Materia>
     {
-        public DiciplinaEnum Disciplina { get; set; }
+        public DisciplinaEnum Disciplina { get; set; }
         public SerieEnum Serie { get; set; }
         public string Descricao { get; set; }
 
         public Materia() { }
-        public Materia(DiciplinaEnum Disciplina, SerieEnum serie, string descricao)
+        public Materia(DisciplinaEnum Disciplina, SerieEnum serie, string descricao)
         {
             this.Disciplina=Disciplina;
             this.Serie=serie;

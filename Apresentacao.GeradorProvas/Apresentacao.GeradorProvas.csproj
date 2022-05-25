@@ -10,7 +10,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Dominio.GeradorProvas\Dominio.GeradorProvas.csproj" />
     <ProjectReference Include="..\Infra.GeradorTeste.Db\Infra.GeradorProvas.Db.csproj" />
-    <ProjectReference Include="..\Repositorio.GeradorProvas\Infra.GeradorProvas.csproj" />
+    <ProjectReference Include="..\Repositorio.GeradorProvas\Infra.GeradorProvas.Arquivo.csproj" />
   </ItemGroup>
 
   <ItemGroup>

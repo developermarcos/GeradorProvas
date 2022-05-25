@@ -9,7 +9,7 @@ namespace Dominio.GeradorProvas.ModuloTeste
     public class Teste : EntidadeBase<Teste>
     {
         public string Titulo { get; set; }
-        public DiciplinaEnum Disciplina { get; set; }
+        public DisciplinaEnum Disciplina { get; set; }
         public SerieEnum Serie { get; set; }
         public int quantidadeQuestoes { get; set; }
         public List<ModuloQuestao.Questao> Questoes { get; set; }

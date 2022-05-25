@@ -22,7 +22,7 @@ namespace GeradorProvas.ModuloMateria
             set 
             { 
                 materia = value;
-                cBoxDiciplina.SelectedItem = (DiciplinaEnum)materia.Disciplina;
+                cBoxDiciplina.SelectedItem = (DisciplinaEnum)materia.Disciplina;
                 cBoxSerie.SelectedItem = (SerieEnum)materia.Serie;
                 txtboxMateria.Text =  materia.Descricao;
             }
@@ -30,8 +30,8 @@ namespace GeradorProvas.ModuloMateria
         public void PreencheTela()
         {
             cBoxDiciplina.Items.Clear();
-            foreach (int i in Enum.GetValues(typeof(DiciplinaEnum)))
-                cBoxDiciplina.Items.Add((DiciplinaEnum)i);
+            foreach (int i in Enum.GetValues(typeof(DisciplinaEnum)))
+                cBoxDiciplina.Items.Add((DisciplinaEnum)i);
 
             cBoxSerie.Items.Clear();
             foreach (int i in Enum.GetValues(typeof(SerieEnum)))
@@ -43,7 +43,7 @@ namespace GeradorProvas.ModuloMateria
             Materia materiaEditada = new Materia();
 
             materiaEditada.Numero = materia.Numero;
-            materiaEditada.Disciplina = (DiciplinaEnum)cBoxDiciplina.SelectedItem;
+            materiaEditada.Disciplina = (DisciplinaEnum)cBoxDiciplina.SelectedItem;
             materiaEditada.Serie = (SerieEnum)cBoxSerie.SelectedItem;
             materiaEditada.Descricao = txtboxMateria.Text;
             

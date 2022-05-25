@@ -37,8 +37,8 @@ namespace GeradorProvas.ModuloTeste
         {
             cBoxDiciplina.Items.Clear();
 
-            foreach (int i in Enum.GetValues(typeof(DiciplinaEnum)))
-                cBoxDiciplina.Items.Add((DiciplinaEnum)i);
+            foreach (int i in Enum.GetValues(typeof(DisciplinaEnum)))
+                cBoxDiciplina.Items.Add((DisciplinaEnum)i);
 
             cBoxSerie.Items.Clear();
 
@@ -49,7 +49,7 @@ namespace GeradorProvas.ModuloTeste
         private void btnGravar_Click(object sender, EventArgs e)
         {
             teste.Titulo = txtboxTitulo.Text;
-            teste.Disciplina = (DiciplinaEnum)cBoxDiciplina.SelectedItem;
+            teste.Disciplina = (DisciplinaEnum)cBoxDiciplina.SelectedItem;
             teste.Serie = (SerieEnum)cBoxSerie.SelectedItem;
             teste.quantidadeQuestoes = (int)numericUpDownQuantidade.Value;
             teste.Questoes = new List<Questao>();
@@ -64,7 +64,7 @@ namespace GeradorProvas.ModuloTeste
 
         public List<Questao> ObterListaQuestoesComFiltro()
         {
-            teste.Disciplina = (DiciplinaEnum)cBoxDiciplina.SelectedItem;
+            teste.Disciplina = (DisciplinaEnum)cBoxDiciplina.SelectedItem;
             teste.Serie = (SerieEnum)cBoxSerie.SelectedItem;
 
             try
