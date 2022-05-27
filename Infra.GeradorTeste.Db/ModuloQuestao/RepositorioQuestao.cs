@@ -13,7 +13,7 @@ namespace Infra.GeradorProvas.Db.ModuloQuestao
     public class RepositorioQuestao : RepositorioBase<Questao>, IRepositorioQuestao
     {
         #region Scripts SQL
-        private readonly string sqlSelectAll =
+        protected override string SqlSelectAll => 
             @"SELECT 
                 Q.NUMERO AS NUMERO,
 	            Q.PERGUNTA AS PERGUNTA,
@@ -28,28 +28,63 @@ namespace Infra.GeradorProvas.Db.ModuloQuestao
 
             ON Q.MATERIA_NUMERO = M.NUMERO";
 
-        private readonly string sqlInsert = "";
-        private readonly string sqlDelete = "";
-        private readonly string sqlEdit = "";
-        private readonly string sqlSelectBy = "";
-        private readonly string sqlSelectAlternativas =
+        protected override string SqlInsert =>
+            @"INSERT INTO TBQUESTAO
+                (
+	                PERGUNTA,
+	                MATERIA_NUMERO
+                )
+                VALUES
+                (
+                    @PERGUNTA,
+                    @MATERIA_NUMERO
+                );
+
+                SELECT SCOPE_IDENTITY();";
+
+        protected override string SqlDelete =>
+            @"DELETE FROM TBQUESTAO
+                
+                WHERE NUMERO = @NUMERO";
+
+        protected override string SqlEdit => @"";
+
+        protected override string SqlSelectBy => @"";
+        #endregion
+
+        #region Scripts SQL Alternativas
+        private readonly string sqlSelectAllAlternativa =
             @"SELECT 
 	            [NUMERO],
 	            [DESCRICAO],
 	            [CORRETA],
 	            [QUESTAO_NUMERO]
+
             FROM [TBALTERNATIVA]
+
             WHERE QUESTAO_NUMERO = @NUMERO";
 
-        protected override string SqlSelectAll => sqlSelectAll;
+        private readonly string sqlInsertAlternativa =
+            @"INSERT INTO [TBALTERNATIVA]
+                (
+	                [DESCRICAO],
+	                [CORRETA],
+	                [QUESTAO_NUMERO]
+                )
+                VALUES
+                (
+	                @DESCRICAO,
+	                @CORRETA,
+	                @QUESTAO_NUMERO
+                );
 
-        protected override string SqlInsert => sqlInsert;
+                SELECT SCOPE_IDENTITY();";
 
-        protected override string SqlDelete => sqlDelete;
+        private readonly string sqlDeleteAlternativas =
+            @"DELETE FROM TBALTERNATIVA
+                
+                WHERE QUESTAO_NUMERO = @QUESTAO_NUMERO";
 
-        protected override string SqlEdit => sqlEdit;
-
-        protected override string SqlSelectBy => sqlSelectBy;
         #endregion
 
         #region Métodos Sobrescritos
@@ -64,10 +99,12 @@ namespace Infra.GeradorProvas.Db.ModuloQuestao
 
             return questoes;
         }
+
         public override void ConfigurarParametrosRegistro(Questao registro, SqlCommand comandoSql)
         {
             comandoSql.Parameters.AddWithValue("NUMERO", registro.Numero);
             comandoSql.Parameters.AddWithValue("PERGUNTA", registro.Pergunta);
+            comandoSql.Parameters.AddWithValue("MATERIA_NUMERO", registro.Materia.Numero);
         }
 
         public override Questao ConverterRegistro(SqlDataReader leitorQuestao)
@@ -102,6 +139,78 @@ namespace Infra.GeradorProvas.Db.ModuloQuestao
             return new ValidadorQuestao();
         }
 
+        public override ValidationResult Inserir(Questao novoRegistro)
+        {
+            var resultado = base.Inserir(novoRegistro);
+
+            if(resultado.IsValid == true)
+            {
+                InserirAlternativas(novoRegistro.Numero, novoRegistro.Alternativas);
+            }
+
+            return resultado;
+        }
+
+        public override ValidationResult Excluir(Questao registro)
+        {
+            ExcluirAlternativas(registro.Numero);
+            return base.Excluir(registro);
+        }
+
+        #endregion
+
+        #region CRUD Alternativas
+        private ValidationResult InserirAlternativas(int questaoNumero, List<Alternativa> alternativas)
+        {
+            var validadorAlternativa = new ValidadorAlternativa();
+
+            foreach(var item in alternativas)
+            {
+                var resultadoValidacao = validadorAlternativa.Validate(item);
+
+                if (resultadoValidacao.IsValid == false)
+                    return resultadoValidacao;
+            }
+                
+            SqlConnection conexaoComBanco = new SqlConnection(conexaoBanco);
+
+            conexaoComBanco.Open();
+
+            foreach(var item in alternativas)
+            {
+                SqlCommand comandoInsercao = new SqlCommand(sqlInsertAlternativa, conexaoComBanco);
+
+                ConfigurarParametrosAlternativa(questaoNumero, item, comandoInsercao);
+
+                var id = comandoInsercao.ExecuteScalar();
+            }
+
+            conexaoComBanco.Close();
+
+            return new ValidationResult();
+        }
+
+        public void ExcluirAlternativas(int numeroExclusao)
+        {
+            SqlConnection conexaoComBanco = new SqlConnection(conexaoBanco);
+
+            SqlCommand comandoExclusao = new SqlCommand(sqlDeleteAlternativas, conexaoComBanco);
+
+            comandoExclusao.Parameters.AddWithValue("QUESTAO_NUMERO", numeroExclusao);
+
+            conexaoComBanco.Open();
+
+            comandoExclusao.ExecuteNonQuery();
+
+            conexaoComBanco.Close();
+        }
+
+        private void ConfigurarParametrosAlternativa(int questaoNumero, Alternativa alternativa, SqlCommand comandoSql)
+        {
+            comandoSql.Parameters.AddWithValue("DESCRICAO", alternativa.Descricao);
+            comandoSql.Parameters.AddWithValue("CORRETA", alternativa.EstaCorreta);
+            comandoSql.Parameters.AddWithValue("QUESTAO_NUMERO", questaoNumero);
+        }
         #endregion
 
         #region Métodos próprios
@@ -109,6 +218,7 @@ namespace Infra.GeradorProvas.Db.ModuloQuestao
         {
             throw new NotImplementedException();
         }
+
         public void CarregarAlternativasQuestao(Questao questao)
         {
 
@@ -124,7 +234,7 @@ namespace Infra.GeradorProvas.Db.ModuloQuestao
             SqlCommand comandoSelecao = new SqlCommand();
             comandoSelecao.Connection = conexaoComBanco;
 
-            comandoSelecao.CommandText = sqlSelectAlternativas;
+            comandoSelecao.CommandText = sqlSelectAllAlternativa;
 
             comandoSelecao.Parameters.AddWithValue("NUMERO", questao.Numero);
 
@@ -156,5 +266,7 @@ namespace Infra.GeradorProvas.Db.ModuloQuestao
             return Alternativa;
         }
         #endregion
+
+        
     }
 }

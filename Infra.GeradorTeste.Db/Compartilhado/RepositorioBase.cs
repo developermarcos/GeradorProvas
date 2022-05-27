@@ -72,7 +72,9 @@ namespace Infra.GeradorProvas.Db.Compartilhado
             ConfigurarParametrosRegistro(novoRegistro, comandoInsercao);
 
             conexaoComBanco.Open();
+
             var id = comandoInsercao.ExecuteScalar();
+
             novoRegistro.Numero = Convert.ToInt32(id);
 
             conexaoComBanco.Close();
@@ -86,13 +88,13 @@ namespace Infra.GeradorProvas.Db.Compartilhado
 
             SqlConnection conexaoComBanco = new SqlConnection(conexaoBanco);
 
-            SqlCommand comandoInsercao = new SqlCommand(SqlDelete, conexaoComBanco);
+            SqlCommand comandoDelecao = new SqlCommand(SqlDelete, conexaoComBanco);
 
-            ConfigurarParametrosRegistro(registro, comandoInsercao);
+            ConfigurarParametrosRegistro(registro, comandoDelecao);
 
             conexaoComBanco.Open();
 
-            var id = comandoInsercao.ExecuteNonQuery();
+            comandoDelecao.ExecuteNonQuery();
 
             conexaoComBanco.Close();
 

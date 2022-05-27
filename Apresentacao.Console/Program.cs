@@ -14,23 +14,38 @@ namespace Apresentacao.Console
     {
         static void Main(string[] args)
         {
-            //Materia novaMateria = new Materia(DisciplinaEnum.Matemática, SerieEnum.Segunda, "teste");
-            //novaMateria.Numero = 5;
-            //IRepositorioMateria repositorioMateria = new RepositorioMateria();
-            //var teste = repositorioMateria.SelecionarTodos();
-            //var registroPorId = repositorioMateria.SelecionarPorNumero(2);
-            //repositorioMateria.Inserir(novaMateria);
+            List<Alternativa> alternativas = new List<Alternativa>();
+            Alternativa alternativa1 = new Alternativa
+            {
+                Descricao = "inserção alternativa 1",
+                EstaCorreta = false
+            };
+            alternativas.Add(alternativa1);
+            Alternativa alternativa2 = new Alternativa
+            {
+                Descricao = "inserção alternativa 2",
+                EstaCorreta = true
+            };
+            alternativas.Add(alternativa2);
 
-            //novaMateria.Descricao = "Subtração alterada";
-            //repositorioMateria.Editar(novaMateria);
-
-            //novaMateria.Numero = 3;
-
-            //repositorioMateria.Excluir(novaMateria);
-            //System.Console.ReadKey();
+            Materia matematica = new Materia
+            {
+                Descricao = "Adição",
+                Disciplina = DisciplinaEnum.Matemática,
+                Serie = SerieEnum.Primeira
+            };
+            Questao novaQuestao = new Questao
+            {
+                Alternativas = alternativas,
+                Materia = matematica,
+                Pergunta = "Pergunta teste inserção"
+            };
 
             IRepositorioQuestao repositorioQuestao = new RepositorioQuestao();
             var questao = repositorioQuestao.SelecionarTodos();
+            repositorioQuestao.Inserir(novaQuestao);
+
+            repositorioQuestao.Excluir(novaQuestao);
             System.Console.ReadKey();
         }
 

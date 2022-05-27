@@ -11,17 +11,17 @@ namespace Infra.GeradorProvas.Db.ModuloMateira
     public class RepositorioMateria : RepositorioBase<Materia>, IRepositorioMateria
     {
         #region Scripts SQL
-        private readonly string sqlSelectAll =
-            @"SELECT 
-		                        [NUMERO], 
-		                        [DESCRICAO], 
-		                        [DISCIPLINA],
-		                        [SERIE]
-	                        FROM 
-		                        [TBMateria]";
-        
-        private readonly string sqlInsert =
-             @"INSERT INTO [TbMateria] 
+        protected override string SqlSelectAll =>
+            @"SELECT INTO [TBMATERIA]
+		                    [NUMERO], 
+		                    [DESCRICAO], 
+		                    [DISCIPLINA],
+		                    [SERIE]
+	                    FROM 
+		                    [TBMateria]";
+
+        protected override string SqlInsert =>
+            @"INSERT INTO [TBMATERIA] 
                         (
                             [DESCRICAO],
                             [DISCIPLINA],
@@ -34,13 +34,13 @@ namespace Infra.GeradorProvas.Db.ModuloMateira
                             @SERIE
                         );
                 SELECT SCOPE_IDENTITY();";
-        
-        private readonly string sqlDelete =
+
+        protected override string SqlDelete =>
             @"	DELETE FROM [TBMateria]
 		                        WHERE
 			                        [NUMERO] = @NUMERO";
 
-        private readonly string sqlEdit =
+        protected override string SqlEdit =>
             @"	UPDATE [TBMateria]	
 		                        SET
 			                        [DESCRICAO] = @DESCRICAO,
@@ -49,7 +49,7 @@ namespace Infra.GeradorProvas.Db.ModuloMateira
 		                        WHERE
 			                        [NUMERO] = @NUMERO";
 
-        private readonly string sqlSelectBy =
+        protected override string SqlSelectBy =>
             @"SELECT 
 		                        [NUMERO], 
 		                        [DESCRICAO], 
@@ -60,16 +60,6 @@ namespace Infra.GeradorProvas.Db.ModuloMateira
 
                             WHERE
                                 [NUMERO] = @NUMERO";
-
-        protected override string SqlSelectAll => sqlSelectAll;
-
-        protected override string SqlInsert => sqlInsert;
-
-        protected override string SqlDelete => sqlDelete;
-
-        protected override string SqlEdit => sqlEdit;
-
-        protected override string SqlSelectBy => sqlSelectBy;
         #endregion
 
         #region Métodos Obrigatórios

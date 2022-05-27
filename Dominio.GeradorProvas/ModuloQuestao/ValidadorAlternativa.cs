@@ -14,9 +14,6 @@ namespace Dominio.GeradorProvas.ModuloQuestao
             RuleFor(x => x.Descricao)
                 .NotEmpty()
                 .NotNull();
-            RuleFor(x => x.EstaCorreta)
-                .NotEmpty()
-                .NotNull();
         }
     }
 }
