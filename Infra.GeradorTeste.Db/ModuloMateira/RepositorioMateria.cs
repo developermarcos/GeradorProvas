@@ -12,13 +12,13 @@ namespace Infra.GeradorProvas.Db.ModuloMateira
     {
         #region Scripts SQL
         protected override string SqlSelectAll =>
-            @"SELECT INTO [TBMATERIA]
-		                    [NUMERO], 
-		                    [DESCRICAO], 
-		                    [DISCIPLINA],
-		                    [SERIE]
-	                    FROM 
-		                    [TBMateria]";
+            @"SELECT
+		                [NUMERO], 
+		                [DESCRICAO], 
+		                [DISCIPLINA],
+		                [SERIE]
+	                FROM 
+		                [TBMateria]";
 
         protected override string SqlInsert =>
             @"INSERT INTO [TBMATERIA] 

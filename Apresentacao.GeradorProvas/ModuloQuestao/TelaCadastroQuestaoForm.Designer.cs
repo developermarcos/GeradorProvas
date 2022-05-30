@@ -45,6 +45,10 @@
             this.btnGravar = new System.Windows.Forms.Button();
             this.cBoxMateria = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
+            this.txtBoxNumeroQuestao = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.txtBoxNumeroAlternativa = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -52,7 +56,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(31, 22);
+            this.label1.Location = new System.Drawing.Point(35, 52);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(53, 15);
@@ -62,7 +66,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(16, 92);
+            this.label2.Location = new System.Drawing.Point(30, 122);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(58, 15);
@@ -73,7 +77,7 @@
             // 
             this.cBoxDiciplina.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cBoxDiciplina.FormattingEnabled = true;
-            this.cBoxDiciplina.Location = new System.Drawing.Point(100, 22);
+            this.cBoxDiciplina.Location = new System.Drawing.Point(100, 52);
             this.cBoxDiciplina.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.cBoxDiciplina.Name = "cBoxDiciplina";
             this.cBoxDiciplina.Size = new System.Drawing.Size(240, 23);
@@ -82,7 +86,7 @@
             // 
             // textBoxDescricao
             // 
-            this.textBoxDescricao.Location = new System.Drawing.Point(100, 92);
+            this.textBoxDescricao.Location = new System.Drawing.Point(100, 122);
             this.textBoxDescricao.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.textBoxDescricao.Name = "textBoxDescricao";
             this.textBoxDescricao.Size = new System.Drawing.Size(487, 23);
@@ -90,16 +94,18 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.label6);
+            this.groupBox1.Controls.Add(this.txtBoxNumeroAlternativa);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.btnAdicionar);
             this.groupBox1.Controls.Add(this.rBtnFalso);
             this.groupBox1.Controls.Add(this.rBtnVerdade);
             this.groupBox1.Controls.Add(this.textBoxAlternativa);
-            this.groupBox1.Location = new System.Drawing.Point(20, 136);
+            this.groupBox1.Location = new System.Drawing.Point(20, 166);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.groupBox1.Size = new System.Drawing.Size(568, 102);
+            this.groupBox1.Size = new System.Drawing.Size(568, 133);
             this.groupBox1.TabIndex = 5;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Alternativa";
@@ -107,7 +113,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(8, 25);
+            this.label3.Location = new System.Drawing.Point(8, 51);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(58, 15);
@@ -117,7 +123,7 @@
             // btnAdicionar
             // 
             this.btnAdicionar.Image = global::Apresentacao.GeradorProvas.Properties.Resources.add;
-            this.btnAdicionar.Location = new System.Drawing.Point(435, 52);
+            this.btnAdicionar.Location = new System.Drawing.Point(435, 79);
             this.btnAdicionar.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btnAdicionar.Name = "btnAdicionar";
             this.btnAdicionar.Size = new System.Drawing.Size(122, 46);
@@ -132,7 +138,7 @@
             // 
             this.rBtnFalso.AutoSize = true;
             this.rBtnFalso.Checked = true;
-            this.rBtnFalso.Location = new System.Drawing.Point(144, 60);
+            this.rBtnFalso.Location = new System.Drawing.Point(144, 87);
             this.rBtnFalso.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.rBtnFalso.Name = "rBtnFalso";
             this.rBtnFalso.Size = new System.Drawing.Size(51, 19);
@@ -144,7 +150,7 @@
             // rBtnVerdade
             // 
             this.rBtnVerdade.AutoSize = true;
-            this.rBtnVerdade.Location = new System.Drawing.Point(10, 60);
+            this.rBtnVerdade.Location = new System.Drawing.Point(10, 87);
             this.rBtnVerdade.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.rBtnVerdade.Name = "rBtnVerdade";
             this.rBtnVerdade.Size = new System.Drawing.Size(80, 19);
@@ -155,7 +161,7 @@
             // 
             // textBoxAlternativa
             // 
-            this.textBoxAlternativa.Location = new System.Drawing.Point(80, 22);
+            this.textBoxAlternativa.Location = new System.Drawing.Point(80, 48);
             this.textBoxAlternativa.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.textBoxAlternativa.Name = "textBoxAlternativa";
             this.textBoxAlternativa.Size = new System.Drawing.Size(481, 23);
@@ -165,11 +171,11 @@
             // 
             this.groupBox2.Controls.Add(this.btnExcluir);
             this.groupBox2.Controls.Add(this.listaAlternativas);
-            this.groupBox2.Location = new System.Drawing.Point(20, 250);
+            this.groupBox2.Location = new System.Drawing.Point(20, 338);
             this.groupBox2.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Padding = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.groupBox2.Size = new System.Drawing.Size(568, 278);
+            this.groupBox2.Size = new System.Drawing.Size(568, 262);
             this.groupBox2.TabIndex = 6;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Alternativas";
@@ -192,10 +198,10 @@
             // 
             this.listaAlternativas.FormattingEnabled = true;
             this.listaAlternativas.ItemHeight = 15;
-            this.listaAlternativas.Location = new System.Drawing.Point(7, 22);
+            this.listaAlternativas.Location = new System.Drawing.Point(8, 22);
             this.listaAlternativas.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.listaAlternativas.Name = "listaAlternativas";
-            this.listaAlternativas.Size = new System.Drawing.Size(409, 244);
+            this.listaAlternativas.Size = new System.Drawing.Size(409, 229);
             this.listaAlternativas.TabIndex = 8;
             // 
             // btnCancelar
@@ -203,7 +209,7 @@
             this.btnCancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnCancelar.Image = global::Apresentacao.GeradorProvas.Properties.Resources.cancel;
             this.btnCancelar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnCancelar.Location = new System.Drawing.Point(332, 538);
+            this.btnCancelar.Location = new System.Drawing.Point(332, 607);
             this.btnCancelar.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(134, 54);
@@ -216,7 +222,7 @@
             // 
             this.btnGravar.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.btnGravar.Image = global::Apresentacao.GeradorProvas.Properties.Resources.pasta;
-            this.btnGravar.Location = new System.Drawing.Point(141, 538);
+            this.btnGravar.Location = new System.Drawing.Point(141, 607);
             this.btnGravar.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btnGravar.Name = "btnGravar";
             this.btnGravar.Size = new System.Drawing.Size(134, 54);
@@ -231,7 +237,7 @@
             // 
             this.cBoxMateria.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cBoxMateria.FormattingEnabled = true;
-            this.cBoxMateria.Location = new System.Drawing.Point(100, 57);
+            this.cBoxMateria.Location = new System.Drawing.Point(100, 87);
             this.cBoxMateria.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.cBoxMateria.Name = "cBoxMateria";
             this.cBoxMateria.Size = new System.Drawing.Size(240, 23);
@@ -240,18 +246,60 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(31, 57);
+            this.label4.Location = new System.Drawing.Point(41, 87);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(47, 15);
             this.label4.TabIndex = 10;
             this.label4.Text = "Matéria";
             // 
+            // txtBoxNumero
+            // 
+            this.txtBoxNumeroQuestao.Enabled = false;
+            this.txtBoxNumeroQuestao.Location = new System.Drawing.Point(100, 18);
+            this.txtBoxNumeroQuestao.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.txtBoxNumeroQuestao.Name = "txtBoxNumero";
+            this.txtBoxNumeroQuestao.Size = new System.Drawing.Size(58, 23);
+            this.txtBoxNumeroQuestao.TabIndex = 13;
+            this.txtBoxNumeroQuestao.Text = "0";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(30, 18);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(51, 15);
+            this.label5.TabIndex = 12;
+            this.label5.Text = "Número";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(8, 22);
+            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(51, 15);
+            this.label6.TabIndex = 12;
+            this.label6.Text = "Número";
+            // 
+            // txtBoxNumeroAlternativa
+            // 
+            this.txtBoxNumeroAlternativa.Enabled = false;
+            this.txtBoxNumeroAlternativa.Location = new System.Drawing.Point(80, 19);
+            this.txtBoxNumeroAlternativa.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.txtBoxNumeroAlternativa.Name = "txtBoxNumeroAlternativa";
+            this.txtBoxNumeroAlternativa.Size = new System.Drawing.Size(58, 23);
+            this.txtBoxNumeroAlternativa.TabIndex = 11;
+            this.txtBoxNumeroAlternativa.Text = "0";
+            // 
             // TelaCadastroQuestaoForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(602, 606);
+            this.ClientSize = new System.Drawing.Size(602, 675);
+            this.Controls.Add(this.txtBoxNumeroQuestao);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.cBoxMateria);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.btnCancelar);
@@ -295,5 +343,9 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ComboBox cBoxMateria;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox txtBoxNumeroQuestao;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox txtBoxNumeroAlternativa;
     }
 }

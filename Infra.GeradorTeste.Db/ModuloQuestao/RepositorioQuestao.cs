@@ -47,9 +47,30 @@ namespace Infra.GeradorProvas.Db.ModuloQuestao
                 
                 WHERE NUMERO = @NUMERO";
 
-        protected override string SqlEdit => @"";
+        protected override string SqlEdit =>
+            @"UPDATE TBQUESTAO
+                SET 
+                    PERGUNTA = @PERGUNTA,
+                    MATERIA_NUMERO = @MATERIA_NUMERO
+                WHERE
+	                NUMERO = @NUMERO;";
 
-        protected override string SqlSelectBy => @"";
+        protected override string SqlSelectBy =>
+            @"SELECT 
+                    Q.NUMERO AS NUMERO,
+	                Q.PERGUNTA AS PERGUNTA,
+	                M.NUMERO AS MATERIA_NUMERO,
+	                M.DESCRICAO AS MATERIA_DESCRICAO,
+	                M.DISCIPLINA AS MATERIA_DISCIPLINA,
+	                M.SERIE AS MATERIA_SERIE
+
+                FROM TBQUESTAO AS Q
+
+                LEFT JOIN TBMATERIA AS M
+
+                ON Q.MATERIA_NUMERO = M.NUMERO
+
+	            WHERE Q.NUMERO = @NUMERO";
         #endregion
 
         #region Scripts SQL Alternativas
@@ -94,10 +115,46 @@ namespace Infra.GeradorProvas.Db.ModuloQuestao
             
             foreach(var item in questoes)
             {
-                CarregarAlternativasQuestao(item);
+                SelecionarAlternativaPorQuestao(item);
             }
 
             return questoes;
+        }
+
+        public override Questao SelecionarPorNumero(int numero)
+        {
+            var questao = base.SelecionarPorNumero(numero);
+
+            SelecionarAlternativaPorQuestao(questao);
+            return questao;
+        }
+
+        public override ValidationResult Inserir(Questao novoRegistro)
+        {
+            var resultado = base.Inserir(novoRegistro);
+
+            if(resultado.IsValid == true)
+            {
+                InserirAlternativas(novoRegistro.Numero, novoRegistro.Alternativas);
+            }
+
+            return resultado;
+        }
+
+        public override ValidationResult Editar(Questao registro)
+        {
+            var validador = base.Editar(registro);
+
+            if(validador.IsValid == true)
+                alterarAlternarivas(registro);            
+
+            return validador;
+        }
+
+        public override ValidationResult Excluir(Questao registro)
+        {
+            ExcluirAlternativas(registro.Numero);
+            return base.Excluir(registro);
         }
 
         public override void ConfigurarParametrosRegistro(Questao registro, SqlCommand comandoSql)
@@ -139,87 +196,10 @@ namespace Infra.GeradorProvas.Db.ModuloQuestao
             return new ValidadorQuestao();
         }
 
-        public override ValidationResult Inserir(Questao novoRegistro)
-        {
-            var resultado = base.Inserir(novoRegistro);
-
-            if(resultado.IsValid == true)
-            {
-                InserirAlternativas(novoRegistro.Numero, novoRegistro.Alternativas);
-            }
-
-            return resultado;
-        }
-
-        public override ValidationResult Excluir(Questao registro)
-        {
-            ExcluirAlternativas(registro.Numero);
-            return base.Excluir(registro);
-        }
-
         #endregion
 
         #region CRUD Alternativas
-        private ValidationResult InserirAlternativas(int questaoNumero, List<Alternativa> alternativas)
-        {
-            var validadorAlternativa = new ValidadorAlternativa();
-
-            foreach(var item in alternativas)
-            {
-                var resultadoValidacao = validadorAlternativa.Validate(item);
-
-                if (resultadoValidacao.IsValid == false)
-                    return resultadoValidacao;
-            }
-                
-            SqlConnection conexaoComBanco = new SqlConnection(conexaoBanco);
-
-            conexaoComBanco.Open();
-
-            foreach(var item in alternativas)
-            {
-                SqlCommand comandoInsercao = new SqlCommand(sqlInsertAlternativa, conexaoComBanco);
-
-                ConfigurarParametrosAlternativa(questaoNumero, item, comandoInsercao);
-
-                var id = comandoInsercao.ExecuteScalar();
-            }
-
-            conexaoComBanco.Close();
-
-            return new ValidationResult();
-        }
-
-        public void ExcluirAlternativas(int numeroExclusao)
-        {
-            SqlConnection conexaoComBanco = new SqlConnection(conexaoBanco);
-
-            SqlCommand comandoExclusao = new SqlCommand(sqlDeleteAlternativas, conexaoComBanco);
-
-            comandoExclusao.Parameters.AddWithValue("QUESTAO_NUMERO", numeroExclusao);
-
-            conexaoComBanco.Open();
-
-            comandoExclusao.ExecuteNonQuery();
-
-            conexaoComBanco.Close();
-        }
-
-        private void ConfigurarParametrosAlternativa(int questaoNumero, Alternativa alternativa, SqlCommand comandoSql)
-        {
-            comandoSql.Parameters.AddWithValue("DESCRICAO", alternativa.Descricao);
-            comandoSql.Parameters.AddWithValue("CORRETA", alternativa.EstaCorreta);
-            comandoSql.Parameters.AddWithValue("QUESTAO_NUMERO", questaoNumero);
-        }
-        #endregion
-
-        #region Métodos próprios
-        public List<Questao> ObterQuestoesRandomicas(List<Questao> questoesFiltradas, int quantidadeQuestoes)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void CarregarAlternativasQuestao(Questao questao)
+        private void SelecionarAlternativaPorQuestao(Questao questao)
         {
 
             #region abrir a conexão com o banco de dados
@@ -253,6 +233,72 @@ namespace Infra.GeradorProvas.Db.ModuloQuestao
             conexaoComBanco.Close();
         }
 
+        private ValidationResult InserirAlternativas(int questaoNumero, List<Alternativa> alternativas)
+        {
+            var validadorAlternativa = new ValidadorAlternativa();
+
+            foreach(var item in alternativas)
+            {
+                var resultadoValidacao = validadorAlternativa.Validate(item);
+
+                if (resultadoValidacao.IsValid == false)
+                    return resultadoValidacao;
+            }
+                
+            SqlConnection conexaoComBanco = new SqlConnection(conexaoBanco);
+
+            conexaoComBanco.Open();
+
+            foreach(var item in alternativas)
+            {
+                SqlCommand comandoInsercao = new SqlCommand(sqlInsertAlternativa, conexaoComBanco);
+
+                ConfigurarParametrosAlternativa(questaoNumero, item, comandoInsercao);
+
+                var id = comandoInsercao.ExecuteScalar();
+            }
+
+            conexaoComBanco.Close();
+
+            return new ValidationResult();
+        }
+
+        private void ExcluirAlternativas(int numeroExclusao)
+        {
+            SqlConnection conexaoComBanco = new SqlConnection(conexaoBanco);
+
+            SqlCommand comandoExclusao = new SqlCommand(sqlDeleteAlternativas, conexaoComBanco);
+
+            comandoExclusao.Parameters.AddWithValue("QUESTAO_NUMERO", numeroExclusao);
+
+            conexaoComBanco.Open();
+
+            comandoExclusao.ExecuteNonQuery();
+
+            conexaoComBanco.Close();
+        }
+
+        private void alterarAlternarivas(Questao registro)
+        {
+            ExcluirAlternativas(registro.Numero);
+            InserirAlternativas(registro.Numero, registro.Alternativas);
+        }
+
+        private void ConfigurarParametrosAlternativa(int questaoNumero, Alternativa alternativa, SqlCommand comandoSql)
+        {
+            comandoSql.Parameters.AddWithValue("NUMERO", alternativa.Numero);
+            comandoSql.Parameters.AddWithValue("DESCRICAO", alternativa.Descricao);
+            comandoSql.Parameters.AddWithValue("CORRETA", alternativa.EstaCorreta);
+            comandoSql.Parameters.AddWithValue("QUESTAO_NUMERO", questaoNumero);
+        }
+        #endregion
+
+        #region Métodos próprios
+        public List<Questao> ObterQuestoesRandomicas(List<Questao> questoesFiltradas, int quantidadeQuestoes)
+        {
+            throw new NotImplementedException();
+        }
+
         private Alternativa ConverterAlternativa(SqlDataReader leitoRegistro)
         {
             int numero = Convert.ToInt32(leitoRegistro["NUMERO"]);
@@ -260,6 +306,7 @@ namespace Infra.GeradorProvas.Db.ModuloQuestao
             bool coreta = Convert.ToBoolean(leitoRegistro["CORRETA"]);
             var Alternativa = new Alternativa
             {
+                Numero = numero,
                 Descricao = descricao,
                 EstaCorreta = coreta
             };

@@ -42,10 +42,11 @@ namespace Apresentacao.Console
             };
 
             IRepositorioQuestao repositorioQuestao = new RepositorioQuestao();
-            var questao = repositorioQuestao.SelecionarTodos();
-            repositorioQuestao.Inserir(novaQuestao);
+            //var questao = repositorioQuestao.SelecionarTodos();
+            //repositorioQuestao.Inserir(novaQuestao);
 
-            repositorioQuestao.Excluir(novaQuestao);
+            //repositorioQuestao.Excluir(novaQuestao);
+            var questao = repositorioQuestao.SelecionarPorNumero(1);
             System.Console.ReadKey();
         }
 

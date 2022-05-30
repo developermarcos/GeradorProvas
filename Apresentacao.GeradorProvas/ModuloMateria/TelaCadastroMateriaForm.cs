@@ -25,6 +25,7 @@ namespace GeradorProvas.ModuloMateria
                 cBoxDiciplina.SelectedItem = (DisciplinaEnum)materia.Disciplina;
                 cBoxSerie.SelectedItem = (SerieEnum)materia.Serie;
                 txtboxMateria.Text =  materia.Descricao;
+                txtBoxNumero.Text = materia.Numero.ToString();
             }
         }
         public void PreencheTela()
