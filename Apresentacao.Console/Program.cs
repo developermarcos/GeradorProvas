@@ -7,6 +7,8 @@ using System.Data.SqlClient;
 using Infra.GeradorProvas.Db.ModuloMateira;
 using Dominio.GeradorProvas.ModuloQuestao;
 using Infra.GeradorProvas.Db.ModuloQuestao;
+using Infra.GeradorProvas.Db.ModuloTeste;
+using Dominio.GeradorProvas.ModuloTeste;
 
 namespace Apresentacao.Console
 {
@@ -14,39 +16,29 @@ namespace Apresentacao.Console
     {
         static void Main(string[] args)
         {
-            List<Alternativa> alternativas = new List<Alternativa>();
-            Alternativa alternativa1 = new Alternativa
-            {
-                Descricao = "inserção alternativa 1",
-                EstaCorreta = false
-            };
-            alternativas.Add(alternativa1);
-            Alternativa alternativa2 = new Alternativa
-            {
-                Descricao = "inserção alternativa 2",
-                EstaCorreta = true
-            };
-            alternativas.Add(alternativa2);
-
-            Materia matematica = new Materia
-            {
-                Descricao = "Adição",
-                Disciplina = DisciplinaEnum.Matemática,
-                Serie = SerieEnum.Primeira
-            };
-            Questao novaQuestao = new Questao
-            {
-                Alternativas = alternativas,
-                Materia = matematica,
-                Pergunta = "Pergunta teste inserção"
-            };
-
             IRepositorioQuestao repositorioQuestao = new RepositorioQuestao();
-            //var questao = repositorioQuestao.SelecionarTodos();
-            //repositorioQuestao.Inserir(novaQuestao);
+            var questao1 = repositorioQuestao.SelecionarPorNumero(1);
+            var questao2 = repositorioQuestao.SelecionarPorNumero(2);
+            var teste = new Teste
+            {
+                Disciplina = DisciplinaEnum.Matemática,
+                Serie = SerieEnum.Primeira,
+                quantidadeQuestoes = 2,
+                Titulo = "teste inserção",
+                Questoes = new List<Questao>(),
+            };
+            teste.Questoes.Add(questao1);
+            teste.Questoes.Add(questao2);
 
-            //repositorioQuestao.Excluir(novaQuestao);
-            var questao = repositorioQuestao.SelecionarPorNumero(1);
+            IRepositorioTeste repositorioTeste = new RepositorioTeste();
+            //var testes = repositorioTeste.SelecionarTodos();
+
+            //var teste = repositorioTeste.SelecionarPorNumero(1);
+
+            var resultInsert = repositorioTeste.Inserir(teste);
+            //repositorioTeste.Excluir(teste);
+            teste.Titulo = "Teste inserção alterado";
+            var resultEdit = repositorioTeste.Editar(teste);
             System.Console.ReadKey();
         }
 

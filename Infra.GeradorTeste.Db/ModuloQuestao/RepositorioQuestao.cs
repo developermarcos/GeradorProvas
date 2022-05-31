@@ -13,20 +13,20 @@ namespace Infra.GeradorProvas.Db.ModuloQuestao
     public class RepositorioQuestao : RepositorioBase<Questao>, IRepositorioQuestao
     {
         #region Scripts SQL
-        protected override string SqlSelectAll => 
+        protected override string SqlSelectAll =>
             @"SELECT 
-                Q.NUMERO AS NUMERO,
-	            Q.PERGUNTA AS PERGUNTA,
-	            M.NUMERO AS MATERIA_NUMERO,
-	            M.DESCRICAO AS MATERIA_DESCRICAO,
-	            M.DISCIPLINA AS MATERIA_DISCIPLINA,
-	            M.SERIE AS MATERIA_SERIE
+                QUESTAO.NUMERO AS NUMERO,
+	            QUESTAO.PERGUNTA AS PERGUNTA,
+	            MATERIA.NUMERO AS MATERIA_NUMERO,
+	            MATERIA.DESCRICAO AS MATERIA_DESCRICAO,
+	            MATERIA.DISCIPLINA AS MATERIA_DISCIPLINA,
+	            MATERIA.SERIE AS MATERIA_SERIE
 
-            FROM TBQUESTAO AS Q
+            FROM TBQUESTAO AS QUESTAO
 
-            LEFT JOIN TBMATERIA AS M
+            LEFT JOIN TBMATERIA AS MATERIA
 
-            ON Q.MATERIA_NUMERO = M.NUMERO";
+            ON QUESTAO.MATERIA_NUMERO = MATERIA.NUMERO";
 
         protected override string SqlInsert =>
             @"INSERT INTO TBQUESTAO
@@ -71,6 +71,9 @@ namespace Infra.GeradorProvas.Db.ModuloQuestao
                 ON Q.MATERIA_NUMERO = M.NUMERO
 
 	            WHERE Q.NUMERO = @NUMERO";
+
+        private readonly string VerificaNomeJaCadastrado =
+            @"SELECT COUNT(1) FROM TBQUESTAO WHERE PERGUNTA = @PERGUNTA";
         #endregion
 
         #region Scripts SQL Alternativas
@@ -150,6 +153,8 @@ namespace Infra.GeradorProvas.Db.ModuloQuestao
 
             return validador;
         }
+
+        
 
         public override ValidationResult Excluir(Questao registro)
         {
@@ -296,7 +301,24 @@ namespace Infra.GeradorProvas.Db.ModuloQuestao
         #region Métodos próprios
         public List<Questao> ObterQuestoesRandomicas(List<Questao> questoesFiltradas, int quantidadeQuestoes)
         {
-            throw new NotImplementedException();
+            if (quantidadeQuestoes > questoesFiltradas.Count)
+                quantidadeQuestoes = questoesFiltradas.Count;
+
+            List<Questao> questaoRandomicas = new List<Questao>();
+
+            Random numero = new Random();
+
+
+            while (questaoRandomicas.Count != quantidadeQuestoes)
+            {
+                int ranNum = numero.Next(0, quantidadeQuestoes);
+
+                if (!questaoRandomicas.Exists(x => x.Numero == questoesFiltradas[ranNum].Numero))
+                    questaoRandomicas.Add(questoesFiltradas[ranNum]);
+            }
+
+
+            return questaoRandomicas;
         }
 
         private Alternativa ConverterAlternativa(SqlDataReader leitoRegistro)

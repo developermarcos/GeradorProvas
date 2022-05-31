@@ -26,6 +26,7 @@ namespace Infra.GeradorProvas.ModuloTeste
         {
             return new ValidadorTeste();
         }
+
         public override ValidationResult Inserir(Teste novoRegistro)
         {
 

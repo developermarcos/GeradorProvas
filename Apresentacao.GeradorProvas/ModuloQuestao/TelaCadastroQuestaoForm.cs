@@ -51,11 +51,11 @@ namespace GeradorProvas.ModuloQuestao
                 questao = value;
                 cBoxDiciplina.SelectedItem = questao.Materia.Disciplina;
                 PopularMateriaPorDisciplinaSelecionada();
-                cBoxMateria.SelectedItem = questao.Materia;
                 textBoxDescricao.Text = questao.Pergunta;
                 txtBoxNumeroQuestao.Text = questao.Numero.ToString();
+                cBoxMateria.SelectedItem = (Materia)questao.Materia;
 
-                foreach(var item in questao.Alternativas)
+                foreach (var item in questao.Alternativas)
                     Alternativas.Add(item);
 
                 ListarAlternativas();

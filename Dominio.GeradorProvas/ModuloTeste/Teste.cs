@@ -12,7 +12,7 @@ namespace Dominio.GeradorProvas.ModuloTeste
         public DisciplinaEnum Disciplina { get; set; }
         public SerieEnum Serie { get; set; }
         public int quantidadeQuestoes { get; set; }
-        public List<ModuloQuestao.Questao> Questoes { get; set; }
+        public List<Questao> Questoes { get; set; }
 
         public Teste() { }
 

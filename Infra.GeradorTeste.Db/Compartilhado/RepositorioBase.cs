@@ -161,7 +161,7 @@ namespace Infra.GeradorProvas.Db.Compartilhado
             return registroSelecionado;
         }
 
-        public abstract T ConverterRegistro(SqlDataReader leitorContato);
+        public abstract T ConverterRegistro(SqlDataReader leitorRegistro);
 
         public abstract AbstractValidator<T> ObterValidador();
 
